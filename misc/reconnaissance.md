@@ -43,6 +43,8 @@ ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Co
 ```bash
 ffuf -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt \
 -u http://target.htb -H "Host: FUZZ.target.htb"
+# or
+ffuf -c -r -w "/usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt" -u "http://FUZZ.linuxsec.org"
 ```
 {% endcode %}
 
