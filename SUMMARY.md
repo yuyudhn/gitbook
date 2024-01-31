@@ -2,11 +2,11 @@
 
 * [About](README.md)
 
-## 🐛 MISC
+## 🚉 QUICKSTART
 
-* [Prerequisite](misc/prerequisite.md)
-* [Reconnaissance](misc/reconnaissance.md)
-* [Post Exploitation](misc/post-exploitation.md)
+* [Prerequisite](quickstart/prerequisite.md)
+* [Reconnaissance](quickstart/reconnaissance.md)
+* [Post Exploitation](quickstart/post-exploitation.md)
 
 ## 🪟 Active Directory
 
