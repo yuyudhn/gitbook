@@ -10,7 +10,8 @@
 
 ## 🪟 Active Directory
 
-* [PowerView](active-directory/ad-enumeration.md)
+* [AD: Enumeration](active-directory/enumeration/README.md)
+  * [PowerView](active-directory/enumeration/powerview.md)
 * [AD: Bypass](active-directory/ad-bypass.md)
 * [AD: Post Exploitation](active-directory/ad-post-exploitation.md)
 * [AD: LDAP](active-directory/ad-ldap.md)
