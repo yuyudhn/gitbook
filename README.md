@@ -6,9 +6,9 @@ description: Just another pentesting checklists
 
 This page contains checklists, resources, and write-ups for HTB machines. Actually, I created this page during my OSCP preparation. But for now, I am just putting all my notes here.&#x20;
 
-### What the Difference with the Other?
+### Keep It Simple!
 
-You may wonder what sets apart these GitBook notes from others, such as **HackTricks**. Well, HackTricks is a good source—I often refer to their page when conducting pentesting. They provide comprehensive guides and checklists for every service.
+What the difference with the other? You may wonder what sets apart these GitBook notes from others, such as **HackTricks**. Well, HackTricks is a good source—I often refer to their page when conducting pentesting. They provide comprehensive guides and checklists for every service.
 
 The difference lies in the simplicity I aim to maintain here. While a full and complete guide is beneficial, sometimes it can be overwhelming with an excess of information. In this space, I create notes based on my experiences. I stick to one tool or resource if it can effectively perform the necessary tasks. For example, if FFuF can handle vhost bruteforce, directory scanning, etc,  why should I use dirsearch, wfuzz, etc? I'm not saying that tools like dirsearch or wfuzz are bad, but I don't see the point in installing many tools with the same function.
 
