@@ -6,6 +6,8 @@ description: Basic Enumeration using CMD and Powershell
 
 ### Architecture Checks
 
+What arch of windows running? x64? x86?
+
 {% code overflow="wrap" %}
 ```powershell
 ver
@@ -14,6 +16,8 @@ wmic os get osarchitecture
 {% endcode %}
 
 ### Hostname Checks
+
+What hostname of this computer?
 
 {% code overflow="wrap" %}
 ```powershell
@@ -24,6 +28,8 @@ whoami
 {% endcode %}
 
 ### Network Checks
+
+ipconfig to displays all the networking information of the current PC your connected to.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -46,6 +52,8 @@ netstat -ano
 
 ### Firewall Checks
 
+Windows Firewall checks using netsh in CMD.
+
 ```powershell
 netsh advfirewall show currentprofile
 netsh firewall show state
@@ -61,14 +69,18 @@ sc query windefend
 
 ### OS Checks
 
+Find OS version, arch used, and OS name.
+
 ```
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
 ```
 
 ### Check if the computer is join to domain
 
+Is this computer join to domain?
+
 {% code overflow="wrap" %}
-```
+```powershell
 set userdomain
 ```
 {% endcode %}
@@ -115,5 +127,31 @@ findstr /spin "password" *.*
 {% code overflow="wrap" %}
 ```powershell
 Schtasks /query /fo LIST /v
+```
+{% endcode %}
+
+### Read Document Metadata
+
+Read metadata of document/files in Powershell
+
+{% code overflow="wrap" %}
+```powershell
+ Get-Item "C:\Users\Nakano Nino\Documents\docs.docx" | Select-Object -Property *
+```
+{% endcode %}
+
+### TCP Port Scanner (Powershell)
+
+{% code overflow="wrap" %}
+```powershell
+1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("172.16.8.1",$_)) "Port $_ is open!"} 2>$null
+```
+{% endcode %}
+
+### Ping Sweep (CMD)
+
+{% code overflow="wrap" %}
+```powershell
+for /l %i in (1,1,254) do @ping -n 1 -w 100 172.16.8.%i > nul && echo 172.16.8.%i is up.
 ```
 {% endcode %}
