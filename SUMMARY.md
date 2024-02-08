@@ -7,6 +7,7 @@
 * [Prerequisite](quickstart/prerequisite.md)
 * [Reconnaissance](quickstart/reconnaissance.md)
 * [Post Exploitation](quickstart/post-exploitation.md)
+* [⛈ Misc](quickstart/misc.md)
 
 ## 🪟 Active Directory
 
@@ -17,7 +18,6 @@
 * [AD: LDAP](active-directory/ad-ldap.md)
 * [Basic Command](active-directory/basic-command.md)
 * [SMB](active-directory/smb.md)
-* [Misc](active-directory/misc.md)
 
 ## 💻 Linux
 
