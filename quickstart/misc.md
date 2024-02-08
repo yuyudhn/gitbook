@@ -13,6 +13,7 @@ description: >-
 * [**Red Teaming Toolkit**](https://github.com/infosecn1nja/Red-Teaming-Toolkit)
 * [**Active Directory Kill Chain Attack & Defense**](https://github.com/infosecn1nja/AD-Attack-Defense)
 * [**OSEP Code Snippets**](https://github.com/chvancooten/OSEP-Code-Snippets)
+* [**SharpCollection**](https://github.com/Flangvik/SharpCollection)
 
 ### AD Attack Tools
 
