@@ -28,6 +28,16 @@ This is common tools for AD / Windows exploitation. I give the keyword, Google i
 * **UACME (**for UAC bypass)
 * **Mimikatz**
 * **LaZagne**
+* **WinPEAS**
+
+### **Linux Attack Tools**
+
+Common tools for Linux enumeration and exploitation.
+
+* **LinPEAS**
+* **pspy**
+* **sund3num**
+* **traitor** (for PE checks)
 
 ### Pivoting
 
