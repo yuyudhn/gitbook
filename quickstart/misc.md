@@ -21,11 +21,13 @@ This is common tools for AD / Windows exploitation. I give the keyword, Google i
 
 * **NetExec** / **CrackMapExec**
 * **Impacket**
-* **Bloodhound**
+* **Bloodhound / Sharphound**
 * **Powersploit** / **PowerView** / **PowerUp**
 * **GhostPack-Compiled Binaries**
 * **PowerUpSQL**
 * **UACME (**for UAC bypass)
+* **Mimikatz**
+* **LaZagne**
 
 ### Pivoting
 
