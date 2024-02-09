@@ -59,6 +59,11 @@ Common tools for thick client pentesting.
 * [**Wireshark**](https://www.wireshark.org/download.html) (For network monitoring)&#x20;
 * [**Proccess Hacker**](https://processhacker.sourceforge.io/downloads.php) (For Proccess Monitoring)&#x20;
 * [**Signcheck**](https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck) (For digital signature details enumeration)
+* **dnSpy** / **ILSpy** (A .NET debugger and assembly editor)
+
+Thick Client Playground:
+
+* [https://github.com/srini0x00/dvta](https://github.com/srini0x00/dvta)
 
 {% hint style="info" %}
 **Note**: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at [yuyudhn@gmail.com](mailto:yuyudhn@gmail.com).
