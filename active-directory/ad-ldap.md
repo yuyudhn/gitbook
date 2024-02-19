@@ -4,7 +4,7 @@ description: LDAP Enumeration and Exploitation
 
 # AD: LDAP
 
-### **ldapsearch query**
+### **ldapsearch**
 
 Get domain infomation
 
