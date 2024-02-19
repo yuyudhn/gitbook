@@ -6,7 +6,9 @@ description: Basic Enumeration using CMD and Powershell
 
 ### Architecture Checks
 
-What arch of windows running? x64? x86?
+What the Windows version installed? What aarch of windows running? x64? x86?
+
+**Why**: Knowing this information will make the decision about the exploit or the crafted payload better.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -17,17 +19,22 @@ wmic os get osarchitecture
 
 ### Hostname Checks
 
-What hostname of this computer?
+What hostname of this computer? Is this computer join AD?
+
+**Why**: Knowing this information will make the attack path decision clear.
 
 {% code overflow="wrap" %}
 ```powershell
 hostname
-# print the domain and username
 whoami
+systeminfo | findstr /B "Domain"
+set userdomain
 ```
 {% endcode %}
 
 ### Network Checks
+
+**Why**: Knowing this information will improve the mapping of the internal network pentest.
 
 ipconfig to displays all the networking information of the current PC your connected to.
 
@@ -35,8 +42,6 @@ ipconfig to displays all the networking information of the current PC your conne
 ```powershell
 ipconfig
 ipconfig /all
-
-# print routing table
 route PRINT
 ```
 {% endcode %}
@@ -54,16 +59,23 @@ netstat -ano
 
 Windows Firewall checks using netsh in CMD.
 
+**Why**: Knowing this information will improve the decision-making process for data transfer.
+
 ```powershell
 netsh advfirewall show currentprofile
+netsh advfirewall show allprofiles
 netsh firewall show state
+Get-Service -Name mpssvc # powershell
 ```
 
-### Windows Defender Checks
+### Defender Checks
+
+**Why**: Knowing this information will help determine whether AV evasion is necessary.
 
 {% code overflow="wrap" %}
-```
-sc query windefend
+```powershell
+sc query windefend # cmd
+Get-Service -Name windefend # powershell
 ```
 {% endcode %}
 
@@ -71,33 +83,37 @@ sc query windefend
 
 Find OS version, arch used, and OS name.
 
-```
+**Why**: Knowing this information is necessary for searching public exploits against the installed version.
+
+```powershell
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
 ```
 
-### Check if the computer is join to domain
+### Running Proccess
 
-Is this computer join to domain?
+Enumerate the running proccess.
 
-{% code overflow="wrap" %}
-```powershell
-set userdomain
-```
-{% endcode %}
-
-### Check running proccess
+**Why**: Knowing this information is necessary for searching public exploits against the running service or proccess.
 
 ```
 tasklist /SVC
 ```
 
-### What patches are installed?
+### Installed Patches
 
-```
+What patches are installed?
+
+Why: Knowing this information is necessary for searching public exploits against the installed patches.
+
+```powershell
 wmic qfe
 ```
 
-### Check installed app
+### Installed Apps
+
+What app installed in this computer?
+
+**Why**: Knowing this information is necessary for searching public exploits against the installed apps.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -130,7 +146,7 @@ Schtasks /query /fo LIST /v
 ```
 {% endcode %}
 
-### Read Document Metadata
+### Document Metadata
 
 Read metadata of document/files in Powershell
 
@@ -140,18 +156,18 @@ Read metadata of document/files in Powershell
 ```
 {% endcode %}
 
-### TCP Port Scanner (Powershell)
+### TCP Port Scanner
 
 {% code overflow="wrap" %}
 ```powershell
-1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("172.16.8.1",$_)) "Port $_ is open!"} 2>$null
+1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("172.16.8.1",$_)) "Port $_ is open!"} 2>$null # powershell
 ```
 {% endcode %}
 
-### Ping Sweep (CMD)
+### Ping Sweep
 
 {% code overflow="wrap" %}
 ```powershell
-for /l %i in (1,1,254) do @ping -n 1 -w 100 172.16.8.%i > nul && echo 172.16.8.%i is up.
+for /l %i in (1,1,254) do @ping -n 1 -w 100 172.16.8.%i > nul && echo 172.16.8.%i is up. # cmd
 ```
 {% endcode %}
