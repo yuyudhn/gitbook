@@ -7,7 +7,7 @@
 * [Prerequisite](quickstart/prerequisite.md)
 * [Reconnaissance](quickstart/reconnaissance.md)
 * [Post Exploitation](quickstart/post-exploitation.md)
-* [⛈ Misc](quickstart/misc.md)
+* [⛈️ Misc](quickstart/misc.md)
 
 ## 🪟 Active Directory
 
@@ -29,7 +29,7 @@
 * [Simple PHP Webshell](backdoor-stuff/php-webshell.md)
 * [Generate Payload](backdoor-stuff/generate-payload.md)
 
-## 🖊 Machine Writeup
+## 🖊️ Machine Writeup
 
 * [HTB Windows](machine-writeup/htb-windows/README.md)
   * [Support](machine-writeup/htb-windows/support.md)

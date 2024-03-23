@@ -2,25 +2,42 @@
 description: Active Directory Enumeration Checklists
 ---
 
-# AD: Enumeration
+# PowerView
 
 ## Using PowerView
 
 PowerView is a PowerShell tool to gain network situational awareness on Windows domains. It contains a set of pure-PowerShell replacements for various windows "net \*" commands, which utilize PowerShell AD hooks and underlying Win32 API functions to perform useful Windows domain functionality.
 
-Import PowerView
+### Import PowerView
 
+{% code overflow="wrap" %}
 ```powershell
 . C:\AD\Tools\PowerView.ps1
 ```
+{% endcode %}
 
-### User Enumeration
+### Get-DomainController
+
+Enumerates the domain controllers for the current or specified domain. By default built in .NET methods are used. The -LDAP switch uses Get-DomainComputer to search for domain controllers.
+
+{% code overflow="wrap" %}
+```powershell
+Get-DomainController
+Get-DomainController -Domain domain.lab
+Get-DomainController -Domain domain.lab -LDAP
+```
+{% endcode %}
+
+### Get-DomainUser
+
+Builds a directory searcher object using Get-DomainSearcher, builds a custom LDAP filter based on targeting/filter parameters, and searches for all objects matching the criteria.
 
 {% code overflow="wrap" %}
 ```powershell
 # Enumerate Domain User
-Get-DomainUser 
-Get-DomainUser -Identity studentX
+Get-DomainUser
+Get-DomainUser -Domain domain.lab 
+Get-DomainUser -Identity "Asuka-Soryu"
 Get-DomainUser -Properties samaccountname,logonCount
 
 # Search for a particular string in a user's attributes
@@ -28,7 +45,9 @@ Get-DomainUser -LDAPFilter "Description=*built*" | Select name,Description
 ```
 {% endcode %}
 
-### Computer Enumeration
+### Get-DomainComputer
+
+Return all computers or specific computer objects in AD.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -37,18 +56,28 @@ Get-DomainComputer | select Name,serviceprincipalname
 Get-DomainComputer | select -ExpandProperty dnshostname
 Get-DomainComputer -OperatingSystem "*Server 2022*" 
 Get-DomainComputer -Ping
+
+# Check Constrained Delegation
+Get-DomainComputer -TrustedToAuth
+
+# Return computer objects that have unconstrained delegation
+Get-DomainComputer -Unconstrained
 ```
 {% endcode %}
 
-### Domain Group Enumeration
+### Get-DomainGroup
+
+Return all groups or specific group objects in AD.
 
 ```powershell
 Get-DomainGroup | select Name
 Get-DomainGroup -Identity "Domain Admins"
-Get-DomainGroup -Domain moneycorp.local
+Get-DomainGroup -Domain domain.lab
 ```
 
-### Domain Group Member Enumeration
+### Get-DomainGroupMember
+
+Return the members of a specific domain group.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -56,14 +85,16 @@ Get-DomainGroup -Domain moneycorp.local
 Get-DomainGroupMember -Identity "Domain Admins" -Recurse
 
 # Get all the members of the Enterprise Admins group
-Get-DomainGroupMember -Identity "Enterprise Admins" -Domain moneycorp.local
+Get-DomainGroupMember -Identity "Enterprise Admins" -Domain domain.lab
 
 # Get the group membership for a user
-Get-DomainGroup -UserName "studentX"
+Get-DomainGroup -UserName "Asuka-Soryu"
 ```
 {% endcode %}
 
-### Enumerate OUs
+### Get-DomainOU
+
+Search for all organization units (OUs) or specific OU objects in AD.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -91,7 +122,9 @@ Get-DomainGPO -Identity '{7478F170-6A0C-490C-B355-9E4618BC785D}'
 ```
 {% endcode %}
 
-### Enumerate ACLs of Domain Admins
+### Get-DomainObjectAcl
+
+Returns the ACLs associated with a specific active directory object.
 
 {% code overflow="wrap" %}
 ```powershell
@@ -99,28 +132,45 @@ Get-DomainObjectAcl -Identity "Domain Admins" -ResolveGUIDs -Verbose
 ```
 {% endcode %}
 
-### Check modify perm for RDPUsers
+### Find-InterestingDomainAcl
+
+Finds object ACLs in the current (or specified) domain with modification rights set to non-built in objects.
 
 {% code overflow="wrap" %}
 ```powershell
+Find-InterestingDomainAcl -ResolveGUIDs
 Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
 ```
 {% endcode %}
 
-### Enumerate all domains in current forest
+### Get-ForestDomain
+
+Return all domains for the current (or specified) forest.
 
 {% code overflow="wrap" %}
 ```powershell
 Get-ForestDomain -Verbose
+Get-ForestDomain -Forest domain.lab
 ```
 {% endcode %}
 
-### Enumerate all trust in current domain
+### Get-DomainTrust
 
 {% code overflow="wrap" %}
 ```powershell
 Get-DomainTrust
 Get-DomainTrust -Domain us.dollarcorp.moneycorp.local
+```
+{% endcode %}
+
+### Get-DomainSID
+
+Returns the SID for the current domain or the specified domain.
+
+{% code overflow="wrap" %}
+```powershell
+Get-DomainSID
+Get-DomainSID -Domain domain.lab
 ```
 {% endcode %}
 
