@@ -1,8 +1,8 @@
 ---
-description: Active Directory Enumeration Checklists
+description: Active Directory Enumeration Checklists with PowerView
 ---
 
-# PowerView
+# AD: PowerView
 
 ## Using PowerView
 

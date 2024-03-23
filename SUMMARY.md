@@ -11,10 +11,11 @@
 
 ## 🪟 Active Directory
 
-* [AD: Enumeration](active-directory/enumeration/README.md)
-  * [PowerView](active-directory/enumeration/powerview.md)
-* [AD: Bypass](active-directory/ad-bypass.md)
-* [AD: Post Exploitation](active-directory/ad-post-exploitation.md)
+* [Enumeration](active-directory/enumeration/README.md)
+  * [AD: PowerView](active-directory/enumeration/powerview.md)
+* [Bypass](active-directory/ad-bypass.md)
+* [Privilege Escalation](active-directory/privilege-escalation.md)
+* [Post Exploitation](active-directory/ad-post-exploitation.md)
 * [AD: LDAP](active-directory/ad-ldap.md)
 * [Basic Command](active-directory/basic-command.md)
 * [SMB](active-directory/smb.md)

@@ -2,7 +2,7 @@
 description: Basic Enumeration using CMD and Powershell
 ---
 
-# AD: Enumeration
+# Enumeration
 
 ### Architecture Checks
 
@@ -156,18 +156,14 @@ Read metadata of document/files in Powershell
 ```
 {% endcode %}
 
-### TCP Port Scanner
+### Check Powershell History
 
 {% code overflow="wrap" %}
 ```powershell
-1..1024 | % {echo ((new-object Net.Sockets.TcpClient).Connect("172.16.8.1",$_)) "Port $_ is open!"} 2>$null # powershell
+(Get-PSReadlineOption).HistorySavePath
 ```
 {% endcode %}
 
-### Ping Sweep
-
-{% code overflow="wrap" %}
-```powershell
-for /l %i in (1,1,254) do @ping -n 1 -w 100 172.16.8.%i > nul && echo 172.16.8.%i is up. # cmd
-```
-{% endcode %}
+{% hint style="warning" %}
+**Note**: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at [yuyudhn@gmail.com](mailto:yuyudhn@gmail.com).
+{% endhint %}
