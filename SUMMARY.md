@@ -11,6 +11,7 @@
 
 ## 🪟 Active Directory
 
+* [Basic Command](active-directory/basic-command.md)
 * [Enumeration](active-directory/enumeration/README.md)
   * [AD: PowerView](active-directory/enumeration/powerview.md)
 * [Bypass](active-directory/ad-bypass.md)
@@ -19,7 +20,6 @@
   * [UAC Bypass](active-directory/privilege-escalation/uac-bypass.md)
 * [Post Exploitation](active-directory/ad-post-exploitation.md)
 * [AD: LDAP](active-directory/ad-ldap.md)
-* [Basic Command](active-directory/basic-command.md)
 * [SMB](active-directory/smb/README.md)
   * [MS17-010](active-directory/smb/ms17-010.md)
 
@@ -33,6 +33,11 @@
 * [Simple PHP Webshell](backdoor-stuff/php-webshell.md)
 * [Generate Payload](backdoor-stuff/generate-payload.md)
 
+## 📳 Mobile Pentest: iOS <a href="#ios" id="ios"></a>
+
+* [iOS Penetration Testing](ios/ios-checklist.md)
+* [Objection](ios/objection.md)
+
 ## 🖊️ Machine Writeup
 
 * [HTB Windows](machine-writeup/htb-windows/README.md)
@@ -43,8 +48,3 @@
   * [Shoppy](machine-writeup/htb-linux/shoppy.md)
   * [GoodGames](machine-writeup/htb-linux/goodgames.md)
   * [Photobomb](machine-writeup/htb-linux/photobomb.md)
-
-## 📳 Mobile Pentest: iOS <a href="#ios" id="ios"></a>
-
-* [iOS Penetration Testing](ios/ios-checklist.md)
-* [Objection](ios/objection.md)

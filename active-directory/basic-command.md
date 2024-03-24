@@ -4,6 +4,8 @@ description: The basic of powershell and CMD
 
 # Basic Command
 
+This note was created when I was not very familiar with the Windows environment. I didn't know how to restart the machine from the command line, copy files, or import PowerShell scripts, etc.
+
 ### Import script to Powershell
 
 ```powershell
@@ -11,20 +13,21 @@ powershell -ep bypass
 Import-Module .\PowerView.ps1
 ```
 
-### Basic Enumeration Command
-
-Retrieving local user
+### Copy command
 
 ```powershell
-Get-LocalUser
-net user
+# copy files
+copy payload.exe "C:\Program Files\Service.exe"
+
+# copy directory name Tools to new directory "MyTools"
+xcopy Tools "C:\Users\Administrator\Desktop\MyTools" /E /I
 ```
 
-Retrieving the ADUsers List
+### Rename command
 
 ```powershell
-Get-ADUser -Filter * -Properties *
-net user /domain
+# Rename Payload.exe to Service.exe
+ren Payload.exe Service.exe
 ```
 
 To get the specific user accounts details
