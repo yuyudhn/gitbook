@@ -25,7 +25,7 @@ This is common tools for AD / Windows exploitation. I give the keyword, Google i
 * **Powersploit** / **PowerView** / **PowerUp**
 * **GhostPack-Compiled Binaries**
 * **PowerUpSQL**
-* **UACME (**for UAC bypass)
+* **UACME** (for UAC bypass)
 * **Mimikatz / LaZagne**
 * **WinPEAS / Moriarty**
 * **Windows Exploit Suggester - Next Generation (WES-NG)**
