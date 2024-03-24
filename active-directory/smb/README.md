@@ -32,6 +32,14 @@ smbclient //192.168.1.2/public --no-pass
 ```
 {% endcode %}
 
+### Password Spraying
+
+{% code overflow="wrap" %}
+```bash
+netexec smb 172.16.8.139 -u username-lists.txt -p 'p@ssw0rd'
+```
+{% endcode %}
+
 ### RID Cycling - Username Enumeration
 
 {% code overflow="wrap" %}
