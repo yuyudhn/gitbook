@@ -212,6 +212,11 @@ Read metadata of document/files in Powershell
 ```
 {% endcode %}
 
+### Resources
+
+* [**Windows - Privilege Escalation**](https://swisskyrepo.github.io/InternalAllTheThings/redteam/escalation/windows-privilege-escalation/)
+* [**Windows - Persistence**](https://swisskyrepo.github.io/InternalAllTheThings/redteam/persistence/windows-persistence/)
+
 {% hint style="warning" %}
 **Note**: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at [yuyudhn@gmail.com](mailto:yuyudhn@gmail.com).
 {% endhint %}
