@@ -4,6 +4,8 @@ description: Unquoted Service Paths – Windows Privilege Escalation
 
 # Unquoted Service Path
 
+In simple terms, when a service is created whose executable path contains spaces and isn't enclosed within quotes, leads to a vulnerability known as Unquoted Service Path which allows a user to gain SYSTEM privileges (only if the vulnerable service is running with SYSTEM privilege level which most of the time it is).
+
 ### Manual Checks
 
 Check service without quotes:

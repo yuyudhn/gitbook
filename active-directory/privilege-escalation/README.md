@@ -6,7 +6,7 @@ description: Windows Privilege Escalation Checks
 
 Privilege escalation checks on Windows involve examining various aspects of the system and its configuration to identify potential vulnerabilities or misconfigurations that could be exploited to elevate privileges.&#x20;
 
-### Windows Local Privilege Escalation Tools and Checklists
+### Tools and Checklists
 
 Here are some common tools and checks used for privilege escalation on Windows systems:
 
@@ -17,3 +17,7 @@ Here are some common tools and checks used for privilege escalation on Windows s
 * [x] PowerUp.ps1
 * [x] UAC Bypass
 * [x] Windows Exploit Suggester - Next Generation (WES-NG)
+
+{% hint style="info" %}
+Note: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at yuyudhn@gmail.com.
+{% endhint %}
