@@ -20,7 +20,8 @@
 * [Post Exploitation](active-directory/ad-post-exploitation.md)
 * [AD: LDAP](active-directory/ad-ldap.md)
 * [Basic Command](active-directory/basic-command.md)
-* [SMB](active-directory/smb.md)
+* [SMB](active-directory/smb/README.md)
+  * [MS17-010](active-directory/smb/ms17-010.md)
 
 ## 💻 Linux
 
