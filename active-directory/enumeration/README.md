@@ -4,6 +4,53 @@ description: Basic Enumeration using CMD and Powershell
 
 # Enumeration
 
+### User Enumeration
+
+Local user checks
+
+{% code overflow="wrap" %}
+```powershell
+# check local user
+net user
+
+# check local admin member
+net localgroup administrators
+
+# check user "asuka"
+net user asuka
+```
+{% endcode %}
+
+Check local user privileges
+
+{% code overflow="wrap" %}
+```powershell
+# check priv
+whoami /priv
+whoami /all
+
+# check group information of current user
+whoami /groups
+whoami /user /groups
+```
+{% endcode %}
+
+Enumerate domain user
+
+```powershell
+# check domain user
+net user /domain
+
+# check domain user "asuka-domain"
+net user asuka-domain /domain
+
+# check domain group
+net group /domain
+
+# Check Domain Admins member
+net group "Domain Admins" /domain
+```
+
 ### Architecture Checks
 
 What the Windows version installed? What aarch of windows running? x64? x86?
@@ -86,6 +133,7 @@ Find OS version, arch used, and OS name.
 **Why**: Knowing this information is necessary for searching public exploits against the installed version.
 
 ```powershell
+systeminfo
 systeminfo | findstr /B /C:"OS Name" /C:"OS Version" /C:"System Type"
 ```
 

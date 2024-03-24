@@ -4,7 +4,7 @@ description: >-
   Cheatsheet
 ---
 
-# ⛈ Misc
+# ⛈️ Misc
 
 ### AD Resource / Checklists
 
@@ -15,20 +15,20 @@ description: >-
 * [**OSEP Code Snippets**](https://github.com/chvancooten/OSEP-Code-Snippets)
 * [**SharpCollection**](https://github.com/Flangvik/SharpCollection)
 
-### AD Attack Tools
+### Windows / AD Attack Tools
 
 This is common tools for AD / Windows exploitation. I give the keyword, Google it how to use.
 
 * **NetExec** / **CrackMapExec**
 * **Impacket**
-* **Bloodhound / Sharphound**
+* **Bloodhound / Sharphound /Rusthound**
 * **Powersploit** / **PowerView** / **PowerUp**
 * **GhostPack-Compiled Binaries**
 * **PowerUpSQL**
 * **UACME (**for UAC bypass)
-* **Mimikatz**
-* **LaZagne**
-* **WinPEAS**
+* **Mimikatz / LaZagne**
+* **WinPEAS / Moriarty**
+* **Windows Exploit Suggester - Next Generation (WES-NG)**
 
 ### **Linux Attack Tools**
 
@@ -37,7 +37,7 @@ Common tools for Linux enumeration and exploitation.
 * **LinPEAS**
 * **pspy**
 * **sund3num**
-* **traitor** (for PE checks)
+* **traitor**
 
 ### Pivoting
 
