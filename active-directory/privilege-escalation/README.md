@@ -12,7 +12,7 @@ Here are some common tools and checks used for privilege escalation on Windows s
 
 * [x] WinPEAS.exe
 * [x] beRoot.exe
-* [x] Watson.exe
+* [x] Watson.exe / Invoke-Watson.ps1
 * [x] Moriarty.exe
 * [x] PowerUp.ps1
 * [x] UAC Bypass
