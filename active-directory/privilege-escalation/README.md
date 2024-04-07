@@ -6,6 +6,11 @@ description: Windows Privilege Escalation Checks
 
 Privilege escalation checks on Windows involve examining various aspects of the system and its configuration to identify potential vulnerabilities or misconfigurations that could be exploited to elevate privileges.&#x20;
 
+### Labs
+
+* [https://tryhackme.com/r/room/windowsprivescarena](https://tryhackme.com/r/room/windowsprivescarena)
+* [https://tryhackme.com/r/room/windows10privesc](https://tryhackme.com/r/room/windows10privesc)
+
 ### Tools and Checklists
 
 Here are some common tools and checks used for privilege escalation on Windows systems:
