@@ -8,8 +8,9 @@ Privilege escalation checks on Windows involve examining various aspects of the 
 
 ### Labs
 
-* [https://tryhackme.com/r/room/windowsprivescarena](https://tryhackme.com/r/room/windowsprivescarena)
-* [https://tryhackme.com/r/room/windows10privesc](https://tryhackme.com/r/room/windows10privesc)
+* [**THM: Windows PrivEsc Arena**](https://tryhackme.com/r/room/windowsprivescarena)
+* [**THM: Windows PrivEsc**](https://tryhackme.com/r/room/windows10privesc)
+* [**THM: Bypassing UAC**](https://tryhackme.com/r/room/bypassinguac)
 
 ### Tools and Checklists
 
