@@ -48,3 +48,7 @@
   * [Shoppy](machine-writeup/htb-linux/shoppy.md)
   * [GoodGames](machine-writeup/htb-linux/goodgames.md)
   * [Photobomb](machine-writeup/htb-linux/photobomb.md)
+
+## 🕸️ Web Application
+
+* [File Inclusion](web-application/file-inclusion.md)
