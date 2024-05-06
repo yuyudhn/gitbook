@@ -1,5 +1,5 @@
 ---
-description: Attacking Tomcat
+description: Attacking Tomcat Service
 ---
 
 # Tomcat
@@ -130,5 +130,9 @@ Or use Laudanum cmd.war shell at **/usr/share/laudanum/jsp**.
 Example of Laudanum WAR Shell
 
 <figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjw11cCHRkpxpt-Mrl8AEsmzZcRDa75MDV2X9EmAUXHAhqOuFMRFHyy_DNK3P88bCHD9raqARpGVbUGr2qknCKOjdb-lKfw8RKW9VhG32s3ekVBK3VZ79NQqQdnOnooaOO0K129Ueoq99t2DkQ2Q9d_cpD9FFIR5lupJ0H1z2GdNPXBTIoiOAs4jzpInUg/s1000/tomcat-mgr-rce.png" alt=""><figcaption><p>CMD Shell</p></figcaption></figure>
+
+### Other Tools
+
+* [https://github.com/p0dalirius/ApacheTomcatScanner](https://github.com/p0dalirius/ApacheTomcatScanner)
 
 Update soon....
