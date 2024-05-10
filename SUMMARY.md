@@ -44,6 +44,7 @@
 * [Common Applications](web-application/common-applications/README.md)
   * [Tomcat](web-application/common-applications/tomcat.md)
 * [File Inclusion](web-application/file-inclusion.md)
+* [Misc](web-application/misc.md)
 
 ## 🖊️ Machine Writeup
 
