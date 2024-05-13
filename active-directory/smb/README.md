@@ -135,7 +135,7 @@ Nmap done: 1 IP address (1 host up) scanned in 13.31 seconds
 ```
 
 ```bash
-# netexec smb 10.10.100.206 -u '' -p '' -M ms17-010
+netexec smb 10.10.100.206 -u '' -p '' -M ms17-010
 
 SMB         10.10.100.206   445    JON-PC           [*] Windows 7 Professional 7601 Service Pack 1 x64 (name:JON-PC) (domain:Jon-PC) (signing:False) (SMBv1:True)
 SMB         10.10.100.206   445    JON-PC           [+] Jon-PC\: 
