@@ -2,7 +2,7 @@
 description: Common Password Attack on Linux Machine
 ---
 
-# Linux Password Attack
+# Linux Password Hunting
 
 ### Config Files Search
 
@@ -55,9 +55,12 @@ ls -la /etc/cron.*/
 
 ### Search SSH Private Key
 
-```
+{% code overflow="wrap" %}
+```bash
 grep -rnw "PRIVATE KEY" /home/* 2>/dev/null | grep ":1"
+grep -rnw "PRIVATE KEY" /* 2>/dev/null | grep ":1"
 ```
+{% endcode %}
 
 ### Bash History
 

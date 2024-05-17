@@ -27,7 +27,7 @@
 
 * [Misc](linux/misc.md)
 * [Linux Post Exploitation](linux/linux-post-exploitation.md)
-* [Linux Password Attack](linux/linux-password-attack.md)
+* [Linux Password Hunting](linux/linux-password-hunting.md)
 
 ## 🐚 Backdoor Stuff
 
