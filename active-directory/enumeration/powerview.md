@@ -140,6 +140,9 @@ Finds object ACLs in the current (or specified) domain with modification rights 
 ```powershell
 Find-InterestingDomainAcl -ResolveGUIDs
 Find-InterestingDomainAcl -ResolveGUIDs | ?{$_.IdentityReferenceName -match "RDPUsers"}
+
+# Quick shot to find RBCD, etc
+Find-InterestingDomainAcl -ResolveGUIDs | Where-Object {$_.SamAccountName -ne "Domain Admins" -and $_.SamAccountName -ne "Account Operators" -and $_.SamAccountName -ne "Enterprise Admins" -and $_.SamAccountName -ne "Administrators" -and $_.SamAccountName -ne "DnsAdmins" -and $_.SamAccountName -ne "Schema Admins" -and $_.SamAccountName -ne "Key Admins" -and $_.SamAccountName -ne "Enterprise Key Admins" -and $_.SamAccountName -ne "Storage Replica Administrators"  -and $_.IdentityReferenceName -ne "DnsAdmins"} | ?{($_.ObjectType -match 'replication-get') -or ($_.ActiveDirectoryRights -match 'GenericAll') -or ($_.ActiveDirectoryRights -match 'WriteDacl') -or ($_.ActiveDirectoryRights -match 'WriteProperty')}
 ```
 {% endcode %}
 
