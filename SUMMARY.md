@@ -41,12 +41,13 @@
 
 ## 🕸️ Web Application
 
+* [SSTI](web-application/ssti.md)
+* [File Inclusion](web-application/file-inclusion.md)
+* [XSS](web-application/xss.md)
+* [Misc](web-application/misc.md)
 * [Common Applications](web-application/common-applications/README.md)
   * [Tomcat](web-application/common-applications/tomcat.md)
   * [Joomla](web-application/common-applications/joomla.md)
-* [File Inclusion](web-application/file-inclusion.md)
-* [Cross-site scripting (XSS)](web-application/cross-site-scripting-xss.md)
-* [Misc](web-application/misc.md)
 
 ## 🖊️ Machine Writeup
 

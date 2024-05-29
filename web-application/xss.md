@@ -1,8 +1,8 @@
 ---
-description: Cross-site scripting (XSS) cheat sheet
+description: Cross-site scripting cheat sheet
 ---
 
-# Cross-site scripting (XSS)
+# XSS
 
 ### Tools
 
