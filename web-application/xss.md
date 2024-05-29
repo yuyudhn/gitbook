@@ -4,7 +4,7 @@ description: Cross-site scripting cheat sheet
 
 # XSS
 
-Cross-site scripting (XSS) remains one of the common vulnerabilities that threaten web applications to this day. XSS attacks rely on injecting a malicious script in a benign website to run on a user’s browser.
+Cross-Site Scripting (XSS) attacks are a type of injection, in which malicious scripts are injected into otherwise benign and trusted websites. XSS attacks occur when an attacker uses a web application to send malicious code, generally in the form of a browser side script, to a different end user. Flaws that allow these attacks to succeed are quite widespread and occur anywhere a web application uses input from a user within the output it generates without validating or encoding it.
 
 ### Playground
 
