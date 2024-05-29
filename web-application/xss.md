@@ -6,7 +6,9 @@ description: Cross-site scripting cheat sheet
 
 ### Tools
 
-**XSStrike**&#x20;
+**XSStrike**
+
+XSStrike is a Cross Site Scripting detection suite equipped with four hand written parsers, an intelligent payload generator, a powerful fuzzing engine and an incredibly fast crawler.
 
 * [https://github.com/s0md3v/XSStrike](https://github.com/s0md3v/XSStrike)
 
@@ -30,6 +32,8 @@ python3 xsstrike.py -u "https://brutelogic.com.br/xss.php?a=fuzz" --file xss.txt
 
 **Nuclei**
 
+Nuclei has some cool XSS detection template that can be used to hunt low hanging fruit XSS.
+
 {% code overflow="wrap" %}
 ```bash
 nuclei -u "https://brutelogic.com.br/xss.php?a=" -tags xss
@@ -37,6 +41,26 @@ nuclei -u "https://brutelogic.com.br/xss.php?a=" -tags xss
 {% endcode %}
 
 <figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiKsc7jaQE8ZSpeD6GKn80EHz74yUCi4kYhDz9cvS3gyxFa42vuwwVRQWWHPdEh6CJ5t_eY2rqml331wuze62eDs7-1DFqkVO8B21XW9z1spp8AfCYyFILb7F2rGlE8JobvylS_qMAYM5ou_Ak9swAkjA1nOf5_Pe8LJV2m4MgOIw-HT4kTOg9TRzsQaBs/s1195/xss%20nuclei.png" alt=""><figcaption><p>Nuclei XSS</p></figcaption></figure>
+
+**Dalfox**
+
+DalFox is a powerful open-source tool that focuses on automation, making it ideal for quickly scanning for XSS flaws and analyzing parameters. Its advanced testing engine and niche features are designed to streamline the process of detecting and verifying vulnerabilities.
+
+* [https://github.com/hahwul/dalfox](https://github.com/hahwul/dalfox)
+
+Usage:
+
+{% code overflow="wrap" %}
+```bash
+# basic scan
+dalfox url https://brutelogic.com.br/xss.php
+
+# scan with custom payload
+dalfox url https://brutelogic.com.br/xss.php --custom-payload xss-payload.txt --skip-bav --only-custom-payload
+```
+{% endcode %}
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEggKvGxnkyI8R8QbZHtRDE7WYJkzhL1UcdB8LQYOK4iB54OFu0pC0OCcCEAjqWRq22Jx7ps2c-clA2GGUehA9IZ3cJwcx0NJ4yPLAP6VaV1R2m9kAed6VNdU8lcZVcxx7mLmnnXAGnf3PlxcAGTYXXVEYAOmM3j0YIjJHk6i5sIGcsXqEKjdtXJy7hGqDA/s923/dalfox.png" alt=""><figcaption><p><strong>Dalfox</strong></p></figcaption></figure>
 
 ### Simple Payload
 
