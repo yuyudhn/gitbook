@@ -4,6 +4,14 @@ description: Cross-site scripting cheat sheet
 
 # XSS
 
+Cross-site scripting (XSS) remains one of the common vulnerabilities that threaten web applications to this day. XSS attacks rely on injecting a malicious script in a benign website to run on a user’s browser.
+
+### Playground
+
+* [https://tryhackme.com/r/room/axss](https://tryhackme.com/r/room/axss)
+* [https://brutelogic.com.br/xss.php](https://brutelogic.com.br/xss.php)
+* [https://xss-labs.abay.sh/xss/](https://xss-labs.abay.sh/xss/)
+
 ### Tools
 
 **XSStrike**
