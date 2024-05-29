@@ -21,7 +21,7 @@ pip3 install -r requirements.txt
 
 # run
 python3 xsstrike.py -u "https://brutelogic.com.br/xss.php?a=fuzz" --fuzzer
-python3 xsstrike.py -u https://www.codelatte.id/labs/xss/1.php --crawl -l 4
+python3 xsstrike.py -u "https://brutelogic.com.br/xss.php" --crawl -l 3
 python3 xsstrike.py -u "https://brutelogic.com.br/xss.php?a=fuzz" --file xss.txt
 ```
 {% endcode %}
