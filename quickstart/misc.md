@@ -29,6 +29,7 @@ This is common tools for AD / Windows exploitation. I give the keyword, Google i
 * **Mimikatz / LaZagne**
 * **WinPEAS / Moriarty**
 * **Windows Exploit Suggester - Next Generation (WES-NG)**
+* **GodPotato (**for Impersonate PE**)**
 
 ### **Linux Attack Tools**
 
@@ -61,7 +62,7 @@ Common tools for thick client pentesting.
 * [**Signcheck**](https://learn.microsoft.com/en-us/sysinternals/downloads/sigcheck) (For digital signature details enumeration)
 * **dnSpy** / **ILSpy** (A .NET debugger and assembly editor)
 
-Thick Client Playground:
+#### Thick Client Playground:
 
 * [https://github.com/srini0x00/dvta](https://github.com/srini0x00/dvta)
 

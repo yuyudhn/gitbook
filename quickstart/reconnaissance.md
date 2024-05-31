@@ -1,7 +1,7 @@
 ---
 description: >-
-  Common reconnaissance phase steps on HackTheBox machines (or during
-  penetration testing).
+  Common reconnaissance phase steps on HackTheBox machines or during penetration
+  testing.
 ---
 
 # Reconnaissance
@@ -26,16 +26,20 @@ sudo nmap -Pn -sU --top-ports 1000 -sV -sC -vv --min-rate=5000 \
 
 ## Directory Scanning
 
+Directory scanning involves scouring the targeted directories or files on a web server to uncover security vulnerabilities. A web server typically allows access to specific directories and files. However, if these directories or files are not managed carefully by web administrators, attackers can exploit these exposed areas to gain access to sensitive information.
+
 ### Directory Scanning with FFuF
 
 {% code overflow="wrap" %}
 ```bash
 ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt \
--u http://target.htb/FUZZ
+-u http://target.htb/FUZZ -c
 ```
 {% endcode %}
 
 ## Subdomain / Virtualhost Brute
+
+During the testing reconnaissance phase, testers spend time on virtual host enumeration, which is the process of discovering all the virtual hosts associated with a particular IP address or domain. This helps them find hidden or undocumented assets that might be vulnerable or misconfigured.
 
 ### Vhost Brute with FFuF
 
@@ -67,7 +71,7 @@ puredns bruteforce --resolvers resolver.txt /usr/share/seclists/Discovery/DNS/dn
 ```
 {% endcode %}
 
-### Subfinder
+### Subdomain Enumeration with Subfinder
 
 {% code overflow="wrap" %}
 ```bash
@@ -133,9 +137,13 @@ http://blog.linuxsec.org (2.3s):
 
 ## JavaScript Analyze
 
+If you’re pentesting web applications, you certainly come across a lot of JavaScript. Nearly every web application nowadays is using it. Frameworks like Angular, React and Vue.js place a lot of functionality and business logic of web applications into the front end. Thus, to thoroughly pentest web applications, you have to analyze their client-side JavaScript.
+
 ### **LinkFinder**
 
-[https://github.com/GerbenJavado/LinkFinder](https://github.com/GerbenJavado/LinkFinder) - LinkFinder is a python script written to discover endpoints and their parameters in JavaScript files.
+LinkFinder is a python script written to discover endpoints and their parameters in JavaScript files.
+
+* [https://github.com/GerbenJavado/LinkFinder](https://github.com/GerbenJavado/LinkFinder)
 
 {% code overflow="wrap" %}
 ```bash
@@ -145,7 +153,9 @@ python3 linkfinder.py -i http://testphp.vulnweb.com -d --output cli
 
 ### **SecretFinder**
 
-[https://github.com/m4ll0k/SecretFinder](https://github.com/m4ll0k/SecretFinder) - SecretFinder is a python script based on LinkFinder, written to discover sensitive data like apikeys, accesstoken, authorizations, jwt,..etc in JavaScript files.
+SecretFinder is a python script based on LinkFinder, written to discover sensitive data like apikeys, accesstoken, authorizations, jwt,..etc in JavaScript files.
+
+* [https://github.com/m4ll0k/SecretFinder](https://github.com/m4ll0k/SecretFinder)
 
 {% code overflow="wrap" %}
 ```bash
