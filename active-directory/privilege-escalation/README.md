@@ -23,6 +23,7 @@ Here are some common tools and checks used for privilege escalation on Windows s
 * [x] PowerUp.ps1
 * [x] UAC Bypass
 * [x] Windows Exploit Suggester - Next Generation (WES-NG)
+* [x] GodPotato
 
 ### WinPEAS
 
