@@ -39,7 +39,7 @@ nmapAutomator.sh --host 10.10.11.11 --output nmapautomator_res --type Recon
 
 When obtaining the IP address of a HackTheBox machine, one essential task is to perform port scanning. The most powerful tool for conducting port scanning is nmap.
 
-#### TCP ports
+### TCP ports
 
 ```bash
 # nmap
@@ -49,7 +49,7 @@ sudo nmap -Pn  -p- target.htb -T4 -oA nmap_full
 sudo naabu -host 10.10.11.11 -p - -nmap-cli 'nmap -sV -oN nmap-output'
 ```
 
-#### **UDP Ports**
+### **UDP Ports**
 
 ```bash
 sudo nmap -Pn -sU --top-ports 1000 -sV -sC -vv --min-rate=5000 \
@@ -60,7 +60,9 @@ sudo nmap -Pn -sU --top-ports 1000 -sV -sC -vv --min-rate=5000 \
 
 Directory scanning involves scouring the targeted directories or files on a web server to uncover security vulnerabilities. A web server typically allows access to specific directories and files. However, if these directories or files are not managed carefully by web administrators, attackers can exploit these exposed areas to gain access to sensitive information.
 
-### Directory Scanning with FFuF
+### FFuF
+
+Directory Scanning with FFuF.
 
 {% code overflow="wrap" %}
 ```bash
@@ -73,7 +75,9 @@ ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Co
 
 During the testing reconnaissance phase, testers spend time on virtual host enumeration, which is the process of discovering all the virtual hosts associated with a particular IP address or domain. This helps them find hidden or undocumented assets that might be vulnerable or misconfigured.
 
-### Vhost Brute with FFuF
+### FFuF
+
+Vhost Brute with FFuF.
 
 {% code overflow="wrap" %}
 ```bash
@@ -84,7 +88,9 @@ ffuf -c -r -w "/usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.t
 ```
 {% endcode %}
 
-### Subdomain Bruteforce with PureDNS
+### PureDNS
+
+Subdomain Bruteforce with PureDNS.
 
 {% code overflow="wrap" %}
 ```bash
@@ -103,7 +109,9 @@ puredns bruteforce --resolvers resolver.txt /usr/share/seclists/Discovery/DNS/dn
 ```
 {% endcode %}
 
-### Subdomain Enumeration with Subfinder
+### Subfinder
+
+Subdomain Enumeration with Subfinder
 
 {% code overflow="wrap" %}
 ```bash
@@ -113,6 +121,8 @@ subfinder -d linuxsec.org
 {% endcode %}
 
 ## Technology Detection
+
+Technology detection is a crucial aspect of penetration testing, providing insights into the software, frameworks, and platforms utilized by the target system. By employing various tools and techniques, penetration testers can identify the underlying technologies, versions, and configurations present, facilitating a deeper understanding of potential vulnerabilities and attack vectors.
 
 ### WhatWeb
 
