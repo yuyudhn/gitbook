@@ -6,6 +6,35 @@ description: >-
 
 # Reconnaissance
 
+## NmapAutomator
+
+Well, I like to use NmapAutomator in my daily pentest activity. I just run NmapAutomator, light a cigarette, and wait for this awesome recon tool to do the job.
+
+```bash
+┌──(root㉿nakano)-[~]
+└─# nmapAutomator.sh        
+
+Usage: nmapAutomator.sh -H/--host <TARGET-IP> -t/--type <TYPE>
+Optional: [-r/--remote <REMOTE MODE>] [-d/--dns <DNS SERVER>] [-o/--output <OUTPUT DIRECTORY>] [-s/--static-nmap <STATIC NMAP PATH>]
+
+Scan Types:
+        Network : Shows all live hosts in the host's network (~15 seconds)
+        Port    : Shows all open ports (~15 seconds)
+        Script  : Runs a script scan on found ports (~5 minutes)
+        Full    : Runs a full range port scan, then runs a script scan on new ports (~5-10 minutes)
+        UDP     : Runs a UDP scan "requires sudo" (~5 minutes)
+        Vulns   : Runs CVE scan and nmap Vulns scan on all found ports (~5-15 minutes)
+        Recon   : Suggests recon commands, then prompts to automatically run them
+        All     : Runs all the scans (~20-30 minutes)
+
+```
+
+{% code overflow="wrap" %}
+```bash
+nmapAutomator.sh --host 10.10.11.11 --output nmapautomator_res --type Recon
+```
+{% endcode %}
+
 ## Port Scanning
 
 When obtaining the IP address of a HackTheBox machine, one essential task is to perform port scanning. The most powerful tool for conducting port scanning is nmap.
@@ -13,8 +42,11 @@ When obtaining the IP address of a HackTheBox machine, one essential task is to 
 #### TCP ports
 
 ```bash
+# nmap
 sudo nmap -sV -sT -sC -oA nmap_initial target.htb
 sudo nmap -Pn  -p- target.htb -T4 -oA nmap_full
+# naabu
+sudo naabu -host 10.10.11.11 -p - -nmap-cli 'nmap -sV -oN nmap-output'
 ```
 
 #### **UDP Ports**
@@ -175,7 +207,11 @@ GoLinkFinder -d http://testphp.vulnweb.com
 
 ## Web Crawling
 
-Use Katana - [https://github.com/projectdiscovery/katana/](https://github.com/projectdiscovery/katana/)
+Another approach to finding endpoints on your targets.
+
+### Katana
+
+\- [https://github.com/projectdiscovery/katana/](https://github.com/projectdiscovery/katana/)
 
 {% code overflow="wrap" %}
 ```bash
@@ -184,6 +220,8 @@ katana -u https://linuxsec.org
 {% endcode %}
 
 ## Vulnerability Assessment
+
+Quick shot to find some 'low-hanging fruit' findings.
 
 ### Wapiti
 
