@@ -12,8 +12,6 @@ This privilege, held by any process, allows the impersonation (but not creation)
 whoami /user /priv
 
 # Example output
-whoami /user /priv
-
 USER INFORMATION
 ----------------
 
