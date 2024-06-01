@@ -47,6 +47,12 @@ PowerUp.ps1 is a program that enables a user to perform quick checks against a W
 * [Advanced PowerUp.ps1 Usage](https://rootrecipe.medium.com/advanced-powerup-ps1-usage-ad0f6d713a9f)
 * [HackTricks: PowerUp](https://book.hacktricks.xyz/windows-hardening/windows-local-privilege-escalation/powerup)
 
+```powershell
+powershell -ep bypass
+. .\PowerUp.ps1
+Invoke-AllChecks
+```
+
 {% hint style="info" %}
 Note: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at yuyudhn@gmail.com.
 {% endhint %}

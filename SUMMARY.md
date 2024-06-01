@@ -17,6 +17,7 @@
 * [Privilege Escalation](active-directory/privilege-escalation/README.md)
   * [Unquoted Service Path](active-directory/privilege-escalation/unquoted-service-path.md)
   * [UAC Bypass](active-directory/privilege-escalation/uac-bypass.md)
+  * [Token Abuse](active-directory/privilege-escalation/token-abuse.md)
 * [Post Exploitation](active-directory/post-exploitation/README.md)
   * [Bypass](active-directory/post-exploitation/ad-bypass.md)
 * [LDAP](active-directory/ad-ldap.md)
