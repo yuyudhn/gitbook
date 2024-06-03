@@ -11,6 +11,10 @@
 
 ## 🪟 Active Directory
 
+* [Service Exploitation](active-directory/service/README.md)
+  * [LDAP](active-directory/service/ldap.md)
+  * [SMB](active-directory/service/smb/README.md)
+    * [MS17-010](active-directory/service/smb/ms17-010.md)
 * [Basic Command](active-directory/basic-command.md)
 * [Enumeration](active-directory/enumeration/README.md)
   * [PowerView](active-directory/enumeration/powerview.md)
@@ -20,9 +24,6 @@
   * [Token Abuse](active-directory/privilege-escalation/token-abuse.md)
 * [Post Exploitation](active-directory/post-exploitation/README.md)
   * [Bypass](active-directory/post-exploitation/ad-bypass.md)
-* [LDAP](active-directory/ad-ldap.md)
-* [SMB](active-directory/smb/README.md)
-  * [MS17-010](active-directory/smb/ms17-010.md)
 
 ## 💻 Linux
 
