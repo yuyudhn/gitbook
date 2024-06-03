@@ -2,7 +2,7 @@
 description: LDAP Enumeration and Exploitation
 ---
 
-# AD: LDAP
+# LDAP
 
 ### **ldapsearch**
 
