@@ -66,13 +66,14 @@ Common tools for thick client pentesting.
 
 * [https://github.com/srini0x00/dvta](https://github.com/srini0x00/dvta)
 
-### Other Usefull Checklists
+### Other Useful Checklists
 
 * [https://notes.vulndev.io/wiki](https://notes.vulndev.io/wiki)
 * [https://www.thehacker.recipes/](https://www.thehacker.recipes/)
 * [https://notthehiddenwiki.com/](https://notthehiddenwiki.com/)
 * [https://www.ired.team/](https://www.ired.team/)
 * [https://www.pudn.com/Download/item/id/1705669525391893.html](https://www.pudn.com/Download/item/id/1705669525391893.html)
+* [https://swisskyrepo.github.io/PayloadsAllTheThings/](https://swisskyrepo.github.io/PayloadsAllTheThings/)
 
 {% hint style="info" %}
 **Note**: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at [yuyudhn@gmail.com](mailto:yuyudhn@gmail.com).
