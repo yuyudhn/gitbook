@@ -18,6 +18,7 @@
   * [LDAP](active-directory/ad-ldap.md)
   * [SMB](active-directory/smb/README.md)
     * [MS17-010](active-directory/smb/ms17-010.md)
+  * [MSSQL](active-directory/service/mssql.md)
 * [Privilege Escalation](active-directory/privilege-escalation/README.md)
   * [Unquoted Service Path](active-directory/privilege-escalation/unquoted-service-path.md)
   * [UAC Bypass](active-directory/privilege-escalation/uac-bypass.md)
