@@ -200,7 +200,7 @@ Read metadata of document/files in Powershell
 
 {% code overflow="wrap" %}
 ```powershell
- Get-Item "C:\Users\Nakano Nino\Documents\docs.docx" | Select-Object -Property *
+ Get-Item "C:\Users\Nakano\Documents\docs.docx" | Select-Object -Property *
 ```
 {% endcode %}
 
@@ -209,6 +209,46 @@ Read metadata of document/files in Powershell
 {% code overflow="wrap" %}
 ```powershell
 (Get-PSReadlineOption).HistorySavePath
+```
+{% endcode %}
+
+Or, the default location for the PowerShell command history:
+
+```
+%userprofile%\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\ConsoleHo
+st_history.txt
+```
+
+i.e
+
+```
+C:\Users\student\AppData\Roaming\Microsoft\Windows\PowerShell\PSReadline\Console
+Host_history.txt
+```
+
+### Check PowerShell Transcript
+
+When a user starts a PS transcript the command log file is generated. The default location for the PowerShell Transcript is: **C:\Users%username%\Documents i.e C:\Users\student\Documents**.
+
+{% code overflow="wrap" %}
+```powershell
+cd C:\Users\student\Documents
+ls
+cat PowerShell_transcript.PRIV-ESC.uFAz6NOs.20201029121705.txt | Select-String -Pattern
+"pass*"
+```
+{% endcode %}
+
+### Check Registry Autologon
+
+{% code overflow="wrap" %}
+```powershell
+reg query 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v
+DefaultUserName
+reg query 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v
+DefaultPassword
+reg query 'HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon' /v
+AutoAdminLogon
 ```
 {% endcode %}
 

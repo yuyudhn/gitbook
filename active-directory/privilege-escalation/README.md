@@ -17,6 +17,7 @@ Privilege escalation checks on Windows involve examining various aspects of the 
 Here are some common tools and checks used for privilege escalation on Windows systems:
 
 * [x] WinPEAS.exe
+* [x] PrivescCheck.ps1
 * [x] beRoot.exe
 * [x] Watson.exe / Invoke-Watson.ps1
 * [x] Moriarty.exe
@@ -52,6 +53,23 @@ powershell -ep bypass
 . .\PowerUp.ps1
 Invoke-AllChecks
 ```
+
+### PrivescCheck
+
+This script aims to identify Local Privilege Escalation (LPE) vulnerabilities that are usually due to Windows configuration issues, or bad practices. It can also gather useful information for some exploitation and post-exploitation tasks.
+
+* [https://github.com/itm4n/PrivescCheck](https://github.com/itm4n/PrivescCheck)
+
+{% code overflow="wrap" %}
+```powershell
+# Basic checks
+powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck -Risky"
+# Extended checks
+powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended -Report PrivescCheck_$($env:COMPUTERNAME) -Format TXT,HTML"
+# All checks
+powershell -ep bypass -c ". .\PrivescCheck.ps1; Invoke-PrivescCheck -Extended -Audit -Report PrivescCheck_$($env:COMPUTERNAME) -Format TXT,HTML"
+```
+{% endcode %}
 
 {% hint style="info" %}
 Note: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at yuyudhn@gmail.com.
