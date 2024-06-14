@@ -24,7 +24,7 @@
   * [UAC Bypass](active-directory/privilege-escalation/uac-bypass.md)
   * [Token Abuse](active-directory/privilege-escalation/token-abuse.md)
 * [Post Exploitation](active-directory/post-exploitation/README.md)
-  * [Bypass](active-directory/post-exploitation/ad-bypass.md)
+  * [MDE Enum](active-directory/post-exploitation/mde-enum.md)
 
 ## 💻 Linux
 
