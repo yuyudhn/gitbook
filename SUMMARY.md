@@ -6,6 +6,7 @@
 
 * [Prerequisite](quickstart/prerequisite.md)
 * [Reconnaissance](quickstart/reconnaissance.md)
+* [Exploitation](quickstart/exploitation.md)
 * [Post Exploitation](quickstart/post-exploitation.md)
 * [⛈️ Misc](quickstart/misc.md)
 

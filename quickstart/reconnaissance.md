@@ -60,14 +60,13 @@ sudo nmap -Pn -sU --top-ports 1000 -sV -sC -vv --min-rate=5000 \
 
 Directory scanning involves scouring the targeted directories or files on a web server to uncover security vulnerabilities. A web server typically allows access to specific directories and files. However, if these directories or files are not managed carefully by web administrators, attackers can exploit these exposed areas to gain access to sensitive information.
 
-### FFuF
+**FFuF**
 
 Directory Scanning with FFuF.
 
 {% code overflow="wrap" %}
 ```bash
-ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt \
--u http://target.htb/FUZZ -c
+ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -u http://target.htb/FUZZ -c
 ```
 {% endcode %}
 
@@ -81,10 +80,7 @@ Vhost Brute with FFuF.
 
 {% code overflow="wrap" %}
 ```bash
-ffuf -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt \
--u http://target.htb -H "Host: FUZZ.target.htb"
-# or
-ffuf -c -r -w "/usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt" -u "http://FUZZ.linuxsec.org"
+ffuf -w /usr/share/seclists/Discovery/DNS/bitquark-subdomains-top100000.txt -u http://target.htb -H "Host: FUZZ.target.htb"
 ```
 {% endcode %}
 
