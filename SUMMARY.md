@@ -23,8 +23,7 @@
   * [Unquoted Service Path](active-directory/privilege-escalation/unquoted-service-path.md)
   * [UAC Bypass](active-directory/privilege-escalation/uac-bypass.md)
   * [Token Abuse](active-directory/privilege-escalation/token-abuse.md)
-* [Post Exploitation](active-directory/post-exploitation/README.md)
-  * [MDE Enum](active-directory/post-exploitation/mde-enum.md)
+* [Post Exploitation](active-directory/post-exploitation.md)
 
 ## 💻 Linux
 
