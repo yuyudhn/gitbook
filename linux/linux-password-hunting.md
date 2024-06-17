@@ -32,7 +32,7 @@ for l in $(echo ".sql .db .*db .db*");do echo -e "\nDB File extension: " $l; fin
 
 {% code overflow="wrap" %}
 ```bash
-find /home/* -type f -name "*.txt" -o ! -name "*.*"
+find /home/* -type f -name "*.txt"
 ```
 {% endcode %}
 
@@ -62,11 +62,21 @@ grep -rnw "PRIVATE KEY" /* 2>/dev/null | grep ":1"
 ```
 {% endcode %}
 
-### Bash History
+### File History
 
 {% code overflow="wrap" %}
 ```bash
-tail -n5 /home/*/.bash*
+find / -type f -name "*_history" 2>/dev/null
+tail -n5 /home/*/.*_history*
+tail -n5 /*/.*_history*
+```
+{% endcode %}
+
+### Search Password in PHP Files
+
+{% code overflow="wrap" %}
+```bash
+grep -Rwi "password\|passwd" --include=*.php
 ```
 {% endcode %}
 
