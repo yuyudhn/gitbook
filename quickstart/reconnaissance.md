@@ -213,17 +213,26 @@ GoLinkFinder -d http://testphp.vulnweb.com
 
 ## Web Crawling
 
-Another approach to finding endpoints on your targets.
+Another approach to finding endpoints on your targets. Some people like using a command-line spider for gathering endpoints. Katana is one of these security focused spiders.
 
-### Katana
-
-\- [https://github.com/projectdiscovery/katana/](https://github.com/projectdiscovery/katana/)
+[**katana**](https://github.com/projectdiscovery/katana) by Projectdiscovery.
 
 {% code overflow="wrap" %}
 ```bash
-katana -u https://linuxsec.org
+katana -u http://testphp.vulnweb.com/ -headless -js-crawl -jsluice -display-out-scope -ef png,css,jpg
 ```
 {% endcode %}
+
+**Tips**
+
+When using katana:
+
+1. use "-headless" as modern CDN WAFs block many command-line spiders.
+2. use "-js-crawl" to enable javascript parsing.
+3. use "-jsluice" to enable syntax-tree (better) javascript parsing.
+4. use "-display-out-scope" to know when the spider find links to other domains that might be related to your target.
+
+Reference: [https://x.com/Jhaddix/status/1802537881694544192](https://x.com/Jhaddix/status/1802537881694544192)
 
 ## Vulnerability Assessment
 
