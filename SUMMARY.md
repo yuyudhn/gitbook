@@ -25,6 +25,8 @@
   * [UAC Bypass](active-directory/privilege-escalation/uac-bypass.md)
   * [Token Abuse](active-directory/privilege-escalation/token-abuse.md)
 * [Post Exploitation](active-directory/post-exploitation.md)
+* [Credential Hunting](active-directory/credential-hunting/README.md)
+  * [Group Policy Preferences](active-directory/credential-hunting/group-policy-preferences.md)
 
 ## 💻 Linux
 
