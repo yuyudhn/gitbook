@@ -42,6 +42,8 @@ When obtaining the IP address of a HackTheBox machine, one essential task is to 
 ### TCP ports
 
 ```bash
+# rustscan
+rustscan -a target.htb -- -sVC
 # nmap
 sudo nmap -sV -sT -sC -oA nmap_initial target.htb
 sudo nmap -Pn  -p- target.htb -T4 -oA nmap_full
@@ -60,13 +62,19 @@ sudo nmap -Pn -sU --top-ports 1000 -sV -sC -vv --min-rate=5000 \
 
 Directory scanning involves scouring the targeted directories or files on a web server to uncover security vulnerabilities. A web server typically allows access to specific directories and files. However, if these directories or files are not managed carefully by web administrators, attackers can exploit these exposed areas to gain access to sensitive information.
 
-**FFuF**
-
-Directory Scanning with FFuF.
+Directory scanning with FFuF.
 
 {% code overflow="wrap" %}
 ```bash
 ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -u http://target.htb/FUZZ -c
+```
+{% endcode %}
+
+Or, with Feroxbuster.
+
+{% code overflow="wrap" %}
+```bash
+feroxbuster -u https://ffuf.io.fi/ -m GET -C 404 --random-agent -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt --auto-tune -x php
 ```
 {% endcode %}
 
@@ -118,38 +126,7 @@ subfinder -d linuxsec.org
 
 ## Technology Detection
 
-Technology detection is a crucial aspect of penetration testing, providing insights into the software, frameworks, and platforms utilized by the target system. By employing various tools and techniques, penetration testers can identify the underlying technologies, versions, and configurations present, facilitating a deeper understanding of potential vulnerabilities and attack vectors.
-
-### WhatWeb
-
-```bash
-whatweb https://blog.linuxsec.org -a 3 -v
-
-# Example output:
-Status    : 200 OK
-Title     : LinuxSec Blog &#8212; Linux Tutorial for Beginners
-IP        : 104.21.95.121
-Country   : UNITED STATES, US
-......
-```
-
-### wafw00f
-
-{% code overflow="wrap" %}
-```bash
-wafw00f https://blog.linuxsec.org
-
-# Example output:
-.........                                                                                                                                                                                                                                           
-[*] Checking https://blog.linuxsec.org
-[+] The site https://blog.linuxsec.org is behind Cloudflare (Cloudflare Inc.) WAF.
-[~] Number of requests: 2
-```
-{% endcode %}
-
-### webanalyze
-
-* [https://github.com/rverton/webanalyze](https://github.com/rverton/webanalyze)
+Technology detection is a crucial aspect of penetration testing, providing insights into the software, frameworks, and platforms utilized by the target system. By employing various tools and techniques, penetration testers can identify the underlying technologies, versions, and configurations present, facilitating a deeper understanding of potential vulnerabilities and attack vectors. Amazing tool to perform technology detection is Browser add-ons Wappalyzer, or cli tool [**webanalyze**](https://github.com/rverton/webanalyze).
 
 {% code overflow="wrap" %}
 ```bash
@@ -170,6 +147,19 @@ http://blog.linuxsec.org (2.3s):
     WordPress, 6.2.3 (CMS, Blogs)
     PHP,  (Programming languages)
     MySQL,  (Databases)
+```
+{% endcode %}
+
+## WAF Detection
+
+In web pentesting, knowing your target, including their WAF, is an important step because you need a different approach when your target is protected by a WAF.
+
+{% code overflow="wrap" %}
+```bash
+# wafw00f
+wafw00f https://blog.linuxsec.org
+# nuclei
+nuclei -t ./http/fuzzing/waf-fuzz.yaml -itags fuzz -silent -u https://blog.linuxsec.org/
 ```
 {% endcode %}
 
