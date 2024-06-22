@@ -66,15 +66,7 @@ Directory scanning with FFuF.
 
 {% code overflow="wrap" %}
 ```bash
-ffuf -recursion-depth 3 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/big.txt -u http://target.htb/FUZZ -c
-```
-{% endcode %}
-
-Or, with Feroxbuster.
-
-{% code overflow="wrap" %}
-```bash
-feroxbuster -u https://ffuf.io.fi/ -m GET -C 404 --random-agent -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt --auto-tune -x php
+ffuf -recursion-depth 4 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -r -recursion -H "User-Agent: Mozilla/5.0 (Windows; U; WinNT4.0; en-US; rv:1.7.9) Gecko/20050711 Firefox/1.0.5" -c -fs 0 -e .php -ac -u https://ffuf.io.fi/FUZZ
 ```
 {% endcode %}
 
@@ -228,19 +220,14 @@ Reference: [https://x.com/Jhaddix/status/1802537881694544192](https://x.com/Jhad
 
 Quick shot to find some 'low-hanging fruit' findings.
 
-### Wapiti
-
 {% code overflow="wrap" %}
 ```bash
+# wapiti
 wapiti --help
 wapiti --url http://testphp.vulnweb.com
-```
-{% endcode %}
-
-### Nikto
-
-{% code overflow="wrap" %}
-```bash
+# katana & nuclei
+katana -u http://testphp.vulnweb.com/ -headless -js-crawl -jsluice -ef png,css,jpg -silent | qsreplace -a | nuclei -t dast/vulnerabilities -dast -silent
+# nikto
 nikto -Help
 nikto -h http://testphp.vulnweb.com
 ```

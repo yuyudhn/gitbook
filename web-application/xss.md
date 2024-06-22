@@ -44,7 +44,7 @@ Nuclei has some cool XSS detection template that can be used to hunt low hanging
 
 {% code overflow="wrap" %}
 ```bash
-nuclei -u "https://brutelogic.com.br/xss.php?a=" -tags xss
+nuclei -u "https://brutelogic.com.br/xss.php?a=" -dast -tags xss -silent
 ```
 {% endcode %}
 
