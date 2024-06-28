@@ -32,10 +32,8 @@ grep "sAMAccountName:"
 {% code overflow="wrap" %}
 ```bash
 ldapdomaindump -u 'support\ldap' -p 'p@ssw0rd' dc.support.htb
-
 # Parse Computer Lists
 cat domain_computers.json | jq -r .[].attributes.dNSHostName[]
-
 # Parse Domain Users
 cat domain_users.json | jq -r .[].attributes.sAMAccountName[]
 ```

@@ -10,16 +10,8 @@ description: Basic SMB Enumeration and Exploitation
 ```bash
 # List all NetExec modules
 netexec smb 172.16.8.139 -L
-
 # Check SMB version
 netexec smb 172.16.8.139
-
-# Check if guest is not disabled
-netexec smb 172.16.8.139 -u guest -p '' --shares
-
-# Null sessions
-netexec smb 172.16.8.139 -u '' -p '' --shares
-
 # Check SMB Service on subnet
 netexec smb 172.16.8.139/24
 
@@ -28,6 +20,40 @@ smbclient -L 192.168.1.2 --no-pass
 smbclient //192.168.1.2/public --no-pass
 ```
 {% endcode %}
+
+### Enumerate Null Sessions
+
+Check if Null Session, also known as Anonymous session, is enabled on the network. Can be very useful on a Domain Controller to enumerate users, groups, password policies, etc.
+
+```bash
+netexec smb 172.16.8.139 -u '' -p ''
+netexec smb 172.16.8.139 -u '' -p '' --shares
+```
+
+### Enumerate Guest Logon
+
+Using a random username and password you can check if the target accepts guest logon. If so, it means that either the domain guest account or the local guest account of the server you're targetting is enabled.
+
+{% code overflow="wrap" %}
+```bash
+netexec smb 172.16.8.139 -u guest -p '' --shares
+netexec smb 172.16.8.139 -u 'nonexist' -p '' --shares
+```
+{% endcode %}
+
+### Enumerate Hosts with SMB Signing Not Required
+
+Maps the network of live hosts and saves a list of only the hosts that don't require SMB signing. List format is one IP per line.
+
+{% code overflow="wrap" %}
+```bash
+netexec smb 192.168.1.0/24 --gen-relay-list relay_list.txt
+```
+{% endcode %}
+
+Reference:
+
+* [https://www.netexec.wiki/smb-protocol/enumeration](https://www.netexec.wiki/smb-protocol/enumeration)
 
 ### Dictionary Attack and Password Spraying
 
@@ -115,7 +141,7 @@ impacket-lookupsid 'evasvc':'Serviceworks1'@evangelion.lab
 smbclient //192.168.1.2/public --no-pass
 
 # with creds
-smbclient //172.16.8.139/SYSVOL -U  'evasvc'%'Serviceworks1' -p 445
+smbclient //172.16.8.139/secrets-folder -U  'username'%'p@ssw0rd' -p 445
 
 # download all files from shares
 smbclient '//10.10.11.174/support-tools' -N -c 'prompt OFF;recurse ON;mget *'
