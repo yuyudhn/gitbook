@@ -41,7 +41,7 @@ RECONFIGURE
 ### Impersonate Other User
 
 {% code overflow="wrap" %}
-```sql
+```bash
 # Find users you can impersonate
 SELECT distinct b.name
 FROM sys.server_permissions a
