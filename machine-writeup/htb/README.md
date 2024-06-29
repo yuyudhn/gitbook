@@ -1,8 +1,8 @@
 ---
-description: Linux Machine Writeups
+description: HackTheBox Machine Writeups
 ---
 
-# HTB Linux
+# HackTheBox
 
 Linux Machine Writeups.
 

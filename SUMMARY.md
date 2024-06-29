@@ -56,11 +56,11 @@
 
 ## 🖊️ Machine Writeup
 
-* [HTB Windows](machine-writeup/htb-windows/README.md)
-  * [Support](machine-writeup/htb-windows/support.md)
-* [HTB Linux](machine-writeup/htb-linux/README.md)
-  * [Pilgrimage](machine-writeup/htb-linux/pilgrimage.md)
-  * [PC](machine-writeup/htb-linux/pc.md)
-  * [Shoppy](machine-writeup/htb-linux/shoppy.md)
-  * [GoodGames](machine-writeup/htb-linux/goodgames.md)
-  * [Photobomb](machine-writeup/htb-linux/photobomb.md)
+* [HackTheBox](machine-writeup/htb/README.md)
+  * [Perfection](https://www.linuxsec.org/2024/06/hackthebox-perfection-writeup.html)
+  * [Pilgrimage](machine-writeup/htb/pilgrimage.md)
+  * [PC](machine-writeup/htb/pc.md)
+  * [Shoppy](machine-writeup/htb/shoppy.md)
+  * [GoodGames](machine-writeup/htb/goodgames.md)
+  * [Photobomb](machine-writeup/htb/photobomb.md)
+  * [Support](machine-writeup/htb/support.md)
