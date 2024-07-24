@@ -26,8 +26,8 @@ smbclient //192.168.1.2/public --no-pass
 Check if Null Session, also known as Anonymous session, is enabled on the network. Can be very useful on a Domain Controller to enumerate users, groups, password policies, etc.
 
 ```bash
-netexec smb 172.16.8.139 -u '' -p ''
-netexec smb 172.16.8.139 -u '' -p '' --shares
+netexec smb 172.16.8.139 -u 'nonexistusers' -p ''
+netexec smb 172.16.8.139 -u 'nonexistusers' -p '' --shares
 ```
 
 ### Enumerate Guest Logon
@@ -36,8 +36,8 @@ Using a random username and password you can check if the target accepts guest l
 
 {% code overflow="wrap" %}
 ```bash
-netexec smb 172.16.8.139 -u guest -p '' --shares
-netexec smb 172.16.8.139 -u 'nonexist' -p '' --shares
+netexec smb 172.16.8.139 -u Guest -p ''
+netexec smb 172.16.8.139 -u Guest -p '' --shares
 ```
 {% endcode %}
 
