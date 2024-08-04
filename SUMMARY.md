@@ -28,7 +28,7 @@
 * [Credential Hunting](active-directory/credential-hunting/README.md)
   * [Group Policy Preferences](active-directory/credential-hunting/group-policy-preferences.md)
 
-## 💻 Linux
+## 🐧 Linux
 
 * [Misc](linux/misc.md)
 * [Linux Post Exploitation](linux/linux-post-exploitation.md)
