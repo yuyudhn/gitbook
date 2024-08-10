@@ -66,9 +66,8 @@ grep -rnw "PRIVATE KEY" /* 2>/dev/null | grep ":1"
 
 {% code overflow="wrap" %}
 ```bash
-find / -type f -name "*_history" 2>/dev/null
+find / -type f -name "*history" 2>/dev/null
 tail -n5 /home/*/.*_history*
-tail -n5 /*/.*_history*
 ```
 {% endcode %}
 
@@ -76,7 +75,7 @@ tail -n5 /*/.*_history*
 
 {% code overflow="wrap" %}
 ```bash
-grep -Rwi "password\|passwd" --include=*.php
+grep -iRl "password\|passwd" /var/www --include=*.php
 ```
 {% endcode %}
 
@@ -86,11 +85,8 @@ grep -Rwi "password\|passwd" --include=*.php
 ```bash
 # unshadow local creds
 unshadow passwd.bak shadow.bak > unshadow.hash
-
 # Perform Dictionary Attack
 hashcat -m 1800 -a 0 unshadow.hash /usr/share/wordlists/rockyou.txt -o cracked_shadow
-# or
-john --wordlist=/usr/share/wordlists/rockyou.txt unshadow.hash
 ```
 {% endcode %}
 
