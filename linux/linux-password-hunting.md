@@ -84,9 +84,26 @@ grep -iRl "password\|passwd" /var/www --include=*.php
 {% code overflow="wrap" %}
 ```bash
 # unshadow local creds
-unshadow passwd.bak shadow.bak > unshadow.hash
+unshadow passwd.bak shadow.bak > unshadow.txt
 # Perform Dictionary Attack
-hashcat -m 1800 -a 0 unshadow.hash /usr/share/wordlists/rockyou.txt -o cracked_shadow
+hashcat -m 1800 -a 0 unshadow.txt /usr/share/wordlists/rockyou.txt -o cracked_shadow
+```
+{% endcode %}
+
+Take a look at the unshadow.txt file. The field after the username (with a number or letter between two dollar signs) is the one that identifies the hash type used. It could be one of the following:
+
+1. **$1$** is MD5
+2. **$2a$** is Blowfish
+3. **$2y$** is Blowfish
+4. **$5$** is SHA-256
+5. **$6$** is SHA-512
+6. **$y$** is yescrypt
+
+For **$y$**, for example, you can use the command:
+
+{% code overflow="wrap" %}
+```bash
+john --format=crypt --wordlist=/usr/share/wordlists/rockyou.txt unshadow.txt
 ```
 {% endcode %}
 
