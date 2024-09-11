@@ -28,6 +28,11 @@
 * [Credential Hunting](active-directory/credential-hunting/README.md)
   * [Group Policy Preferences](active-directory/credential-hunting/group-policy-preferences.md)
 
+## MITRE ATT\&CK <a href="#mitre" id="mitre"></a>
+
+* [Defense Evasion](mitre/defense-evasion/README.md)
+  * [Physical Attack: Remove EDR](mitre/defense-evasion/physical-attack-remove-edr.md)
+
 ## 🐧 Linux
 
 * [Misc](linux/misc.md)

@@ -12,10 +12,8 @@ Local user checks
 ```powershell
 # check local user
 net user
-
 # check local admin member
 net localgroup administrators
-
 # check user "asuka"
 net user asuka
 ```
@@ -28,7 +26,6 @@ Check local user privileges
 # check priv
 whoami /priv
 whoami /all
-
 # check group information of current user
 whoami /groups
 whoami /user /groups
@@ -40,13 +37,10 @@ Enumerate domain user
 ```powershell
 # check domain user
 net user /domain
-
 # check domain user "asuka-domain"
 net user asuka-domain /domain
-
 # check domain group
 net group /domain
-
 # Check Domain Admins member
 net group "Domain Admins" /domain
 ```
