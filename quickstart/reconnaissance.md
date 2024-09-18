@@ -189,9 +189,6 @@ Quick shot to find some 'low-hanging fruit' findings.
 # wapiti
 wapiti --help
 wapiti --url http://testphp.vulnweb.com
-# nikto
-nikto -Help
-nikto -h http://testphp.vulnweb.com
 ```
 {% endcode %}
 
