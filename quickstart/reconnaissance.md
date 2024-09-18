@@ -10,25 +10,6 @@ description: >-
 
 Well, I like to use NmapAutomator in my daily pentest activity. I just run NmapAutomator, light a cigarette, and wait for this awesome recon tool to do the job.
 
-```bash
-┌──(root㉿nakano)-[~]
-└─# nmapAutomator.sh        
-
-Usage: nmapAutomator.sh -H/--host <TARGET-IP> -t/--type <TYPE>
-Optional: [-r/--remote <REMOTE MODE>] [-d/--dns <DNS SERVER>] [-o/--output <OUTPUT DIRECTORY>] [-s/--static-nmap <STATIC NMAP PATH>]
-
-Scan Types:
-        Network : Shows all live hosts in the host's network (~15 seconds)
-        Port    : Shows all open ports (~15 seconds)
-        Script  : Runs a script scan on found ports (~5 minutes)
-        Full    : Runs a full range port scan, then runs a script scan on new ports (~5-10 minutes)
-        UDP     : Runs a UDP scan "requires sudo" (~5 minutes)
-        Vulns   : Runs CVE scan and nmap Vulns scan on all found ports (~5-15 minutes)
-        Recon   : Suggests recon commands, then prompts to automatically run them
-        All     : Runs all the scans (~20-30 minutes)
-
-```
-
 {% code overflow="wrap" %}
 ```bash
 nmapAutomator.sh --host 10.10.11.11 --output nmapautomator_res --type Recon
@@ -42,13 +23,7 @@ When obtaining the IP address of a HackTheBox machine, one essential task is to 
 ### TCP ports
 
 ```bash
-# rustscan
-rustscan -a target.htb -- -sVC
-# nmap
-sudo nmap -sV -sT -sC -oA nmap_initial target.htb
-sudo nmap -Pn  -p- target.htb -T4 -oA nmap_full
-# naabu
-sudo naabu -host 10.10.11.11 -p - -nmap-cli 'nmap -sV -oN nmap-output'
+rustscan -a 10.10.11.33 -- -Pn -sVC -oN 10.10.11.33_scan
 ```
 
 ### **UDP Ports**
@@ -62,11 +37,11 @@ sudo nmap -Pn -sU --top-ports 1000 -sV -sC -vv --min-rate=5000 \
 
 Directory scanning involves scouring the targeted directories or files on a web server to uncover security vulnerabilities. A web server typically allows access to specific directories and files. However, if these directories or files are not managed carefully by web administrators, attackers can exploit these exposed areas to gain access to sensitive information.
 
-Directory scanning with FFuF.
+Directory scanning with Feroxbuster.
 
 {% code overflow="wrap" %}
 ```bash
-ffuf -recursion-depth 4 -t 100 -w /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -r -recursion -H "User-Agent: Mozilla/5.0 (Windows; U; WinNT4.0; en-US; rv:1.7.9) Gecko/20050711 Firefox/1.0.5" -c -fs 0 -e .php -ac -u https://ffuf.io.fi/FUZZ
+feroxbuster -C 404 --random-agent --auto-tune -k --wordlist /usr/share/wordlists/seclists/Discovery/Web-Content/common.txt -x php --threads 100 -u http://testphp.vulnweb.com
 ```
 {% endcode %}
 
@@ -76,7 +51,7 @@ During the testing reconnaissance phase, testers spend time on virtual host enum
 
 ### FFuF
 
-Vhost Brute with FFuF.
+Vhost Brute with FFuF (CTF style)
 
 {% code overflow="wrap" %}
 ```bash
@@ -95,7 +70,6 @@ git clone https://github.com/blechschmidt/massdns
 cd massdns
 make
 sudo make install
-
 # https://github.com/d3mondev/puredns
 ➜  tmp cat resolver.txt
 1.1.1.1
@@ -183,16 +157,6 @@ python3 SecretFinder.py -i http://testhtml5.vulnweb.com -e --output cli
 ```
 {% endcode %}
 
-### GoLinkFinder
-
-[https://github.com/0xsha/GoLinkFinder](https://github.com/0xsha/GoLinkFinder) - A minimal JS endpoint extractor
-
-{% code overflow="wrap" %}
-```bash
-GoLinkFinder -d http://testphp.vulnweb.com
-```
-{% endcode %}
-
 ## Web Crawling
 
 Another approach to finding endpoints on your targets. Some people like using a command-line spider for gathering endpoints. Katana is one of these security focused spiders.
@@ -225,13 +189,21 @@ Quick shot to find some 'low-hanging fruit' findings.
 # wapiti
 wapiti --help
 wapiti --url http://testphp.vulnweb.com
-# katana & nuclei
-katana -u http://testphp.vulnweb.com/ -headless -js-crawl -jsluice -ef png,css,jpg -silent | qsreplace -a | nuclei -t dast/vulnerabilities -dast -silent
 # nikto
 nikto -Help
 nikto -h http://testphp.vulnweb.com
 ```
 {% endcode %}
+
+Nuclei + Katana
+
+{% code overflow="wrap" %}
+```bash
+katana -u http://testphp.vulnweb.com/ -headless -js-crawl -jsluice -ef png,css,jpg -silent | qsreplace -a | nuclei -t dast/vulnerabilities -dast -silent
+```
+{% endcode %}
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiqti-EEd7fS3ENngTk7wjCqb5jR504HRxBXwZylS1F-MQeuiMfhVrvrshtaB2kiLQv4yVrb23XzJYA6M3dK-kjgSmfe8bl4HazfMaP_mRta63ESKC32CJ6wGkMBxJBTlhVE17gGWxRMix6QAPYf6RStt_Rl8Kj9HNeUwolwfDBFYQCO9c0soBhp3n5qQ/s800" alt=""><figcaption><p>Nuclei + Katana</p></figcaption></figure>
 
 {% hint style="info" %}
 **Note**: This page is incomplete and will be regularly updated. If you have any ideas or resources that need to be added, please contact me at [yuyudhn@gmail.com](mailto:yuyudhn@gmail.com).

