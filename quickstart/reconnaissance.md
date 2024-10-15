@@ -2,6 +2,7 @@
 description: >-
   Common reconnaissance phase steps on HackTheBox machines or during penetration
   testing.
+icon: face-viewfinder
 ---
 
 # Reconnaissance
@@ -163,7 +164,7 @@ Another approach to finding endpoints on your targets. Some people like using a 
 
 [**katana**](https://github.com/projectdiscovery/katana) by Projectdiscovery.
 
-{% code overflow="wrap" %}
+{% code overflow="wrap" fullWidth="false" %}
 ```bash
 katana -u http://testphp.vulnweb.com/ -headless -js-crawl -jsluice -display-out-scope -ef png,css,jpg
 ```

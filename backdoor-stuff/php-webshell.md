@@ -1,5 +1,6 @@
 ---
 description: Several list of simple and obfuscate PHP shell
+icon: php
 ---
 
 # Simple PHP Webshell
