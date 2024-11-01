@@ -69,14 +69,11 @@ Get-DomainComputer -Unconstrained
 ```
 {% endcode %}
 
+{% code overflow="wrap" %}
 ```powershell
-Get-DomainComputer | ForEach-Object {
-    [PSCustomObject]@{
-        Name                 = $_.Name
-        ServicePrincipalName = $_.serviceprincipalname -join ', '
-    }
-} | Format-List
+Get-DomainComputer | ForEach-Object { [PSCustomObject]@{ Name = $_.Name; ServicePrincipalName = $_.serviceprincipalname -join ', ' } } | Format-List
 ```
+{% endcode %}
 
 <figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8IseuR4syJDmU6nW2AJchPKfqc6VHiwgnTPlTuthc0uTjOUsbsvtKFmsL_67vAXML2QVeA67GLYmhhampb5JqPmTDnqltjAy9BIRQesV-kXEd9FMzd3DqX1a2JbTwhayFAwrgL47bU1lnKqZ1sU5ZD9Ndv_f3Ge9X6EJq1L5z9PM4AI3yi9CNjWkjzr0/s1015/expand%20output.png" alt=""><figcaption><p>Expand Output</p></figcaption></figure>
 
