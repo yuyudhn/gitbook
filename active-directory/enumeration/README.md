@@ -1,5 +1,5 @@
 ---
-description: Basic Enumeration using CMD and Powershell
+description: Basic Enumeration using Command Prompt and PowerShell
 ---
 
 # Enumeration

@@ -1,5 +1,5 @@
 ---
-description: The basic of Powershell and CMD
+description: The basic of Command Prompt and PowerShell
 ---
 
 # Basic Command

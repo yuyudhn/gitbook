@@ -41,7 +41,7 @@ Builds a directory searcher object using Get-DomainSearcher, builds a custom LDA
 # Enumerate Domain User
 Get-DomainUser
 Get-DomainUser -Domain domain.lab 
-Get-DomainUser -Identity "Asuka-Soryu"
+Get-DomainUser -Identity "Asuka.Soryu"
 Get-DomainUser -Properties samaccountname,logonCount
 
 # Search for a particular string in a user's attributes
@@ -68,6 +68,17 @@ Get-DomainComputer -TrustedToAuth
 Get-DomainComputer -Unconstrained
 ```
 {% endcode %}
+
+```powershell
+Get-DomainComputer | ForEach-Object {
+    [PSCustomObject]@{
+        Name                 = $_.Name
+        ServicePrincipalName = $_.serviceprincipalname -join ', '
+    }
+} | Format-List
+```
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8IseuR4syJDmU6nW2AJchPKfqc6VHiwgnTPlTuthc0uTjOUsbsvtKFmsL_67vAXML2QVeA67GLYmhhampb5JqPmTDnqltjAy9BIRQesV-kXEd9FMzd3DqX1a2JbTwhayFAwrgL47bU1lnKqZ1sU5ZD9Ndv_f3Ge9X6EJq1L5z9PM4AI3yi9CNjWkjzr0/s1015/expand%20output.png" alt=""><figcaption><p>Expand Output</p></figcaption></figure>
 
 ### Get-DomainGroup
 
@@ -180,6 +191,16 @@ Get-DomainSID
 Get-DomainSID -Domain domain.lab
 ```
 {% endcode %}
+
+### Invoke-Kerberoast
+
+Kerberoasting.
+
+```powershell
+Invoke-Kerberoast | fl
+```
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJfDAMwT8mQDw4jVh61WDtOIs6ValRU8H3tXGrr6-saUelUh4FoCH2MCf6-eTDl5L1n1XCxPkSKrtdYeZktcpr4sXb4ORDC-puUyBiKyfPYXqmKkUZC7BIr19oAYXDpfZdlWMSmflkkQg3zk_urxCmnuohGaXiS5FwIsQzw1trc9VaeBLZU6K-oWRL0P4/s1098/kerberoasting.png" alt=""><figcaption><p>Kerberoasting</p></figcaption></figure>
 
 ### Find-PSRemotingLocalAdminAccess
 
