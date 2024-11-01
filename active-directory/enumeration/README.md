@@ -141,6 +141,17 @@ Enumerate the running proccess.
 tasklist /SVC
 ```
 
+### Check Process using PowerShell
+
+{% code overflow="wrap" %}
+```powershell
+Get-Process | Select-Object Name, Id
+Get-Process -Id 2180 | Format-List *
+```
+{% endcode %}
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiiPTbOwjADi5ZwltlC6N8eY4dSd6gwsvbUK-sWYmdllmq4Vf9f6wVtYyOpm5tRNvkChSTFVHqPs5X_Gz60uvG8Wam03iD7-scLB-Si-lX9yoEqy9Gx_kQ4bpXg2_lNtDwy8VK1UArLXXBYhx5dYjMBG2ChesmMAwy6eH0Ug0kPtblCaVoNmJ-bZv2Icfg/s1029/check%20detail%20process.png" alt=""><figcaption><p>Check process</p></figcaption></figure>
+
 ### Installed Patches
 
 What patches are installed?

