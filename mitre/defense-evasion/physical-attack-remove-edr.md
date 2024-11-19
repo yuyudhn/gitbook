@@ -4,6 +4,11 @@ description: Remove EDR and XDR via Physical Attack
 
 # Physical Attack: Remove EDR
 
+### MITRE ATT\&CK
+
+* **T1562.001 - Impair Defenses: Disable or Modify Tools**
+* **T1070.003 - Indicator Removal on Host: File Deletion**
+
 Okay, let’s assume you are on an Assume Breach engagement. The client provides you with an employee’s laptop or computer that is already standardized with endpoint security, such as EDR or XDR. You can try this approach to completely disable the EDR from the device:
 
 1. Unplug the internal SSD or hard disk from the employee's laptop.
