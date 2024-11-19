@@ -33,6 +33,7 @@
 
 * [Defense Evasion](mitre/defense-evasion/README.md)
   * [Physical Attack: Remove EDR](mitre/defense-evasion/physical-attack-remove-edr.md)
+  * [AMSI Bypass](mitre/defense-evasion/amsi-bypass.md)
 * [Credential Access](mitre/credential-access/README.md)
   * [Dump SAM Hashes via Registry](mitre/credential-access/dump-sam-hashes-via-registry.md)
 
