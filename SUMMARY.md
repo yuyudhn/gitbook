@@ -28,6 +28,7 @@
   * [Tunneling with Ligolo-ng](active-directory/post-exploitation/tunneling-with-ligolo-ng.md)
 * [Credential Hunting](active-directory/credential-hunting/README.md)
   * [Group Policy Preferences](active-directory/credential-hunting/group-policy-preferences.md)
+  * [DPAPI](active-directory/credential-hunting/dpapi.md)
 
 ## MITRE ATT\&CK <a href="#mitre" id="mitre"></a>
 
