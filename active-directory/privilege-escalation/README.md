@@ -31,7 +31,17 @@ Here are some common tools and checks used for privilege escalation on Windows s
 Windows Privilege Escalation Awesome Scripts
 
 * [https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS](https://github.com/carlospolop/PEASS-ng/tree/master/winPEAS)
-* [Invoke-WinPEAS](https://raw.githubusercontent.com/BC-SECURITY/Empire/main/empire/server/data/module\_source/privesc/Invoke-winPEAS.ps1)
+* [Invoke-WinPEAS](https://raw.githubusercontent.com/BC-SECURITY/Empire/main/empire/server/data/module_source/privesc/Invoke-winPEAS.ps1)
+
+### Unattended Windows Installations
+
+When installing Windows on a large number of hosts, administrators may use Windows Deployment Services, which allows for a single operating system image to be deployed to several hosts through the network. These kinds of installations are referred to as unattended installations as they don't require user interaction. Such installations require the use of an administrator account to perform the initial setup, which might end up being stored in the machine in the following locations:
+
+* C:\Unattend.xml
+* C:\Windows\Panther\Unattend.xml
+* C:\Windows\Panther\Unattend\Unattend.xml
+* C:\Windows\system32\sysprep.inf
+* C:\Windows\system32\sysprep\sysprep.xml
 
 ### UACME
 
