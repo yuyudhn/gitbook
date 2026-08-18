@@ -59,6 +59,7 @@
 * [Common Applications](web-application/common-applications/README.md)
   * [Tomcat](web-application/common-applications/tomcat.md)
   * [Joomla](web-application/common-applications/joomla.md)
+* [JWT Attacks](web-application/jwt-attacks.md)
 * [SSTI](web-application/ssti.md)
 * [File Inclusion](web-application/file-inclusion.md)
 * [XSS](web-application/xss.md)
